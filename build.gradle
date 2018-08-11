@@ -4,11 +4,19 @@ plugins {
     id "idea"
     id "org.sonarqube" version "2.6.2"
     id "jacoco"
+    id 'com.github.kt3k.coveralls' version '2.6.3'
 }
 
 buildScan {
     termsOfServiceUrl = "https://gradle.com/terms-of-service"
     termsOfServiceAgree = "yes"
+}
+
+jacocoTestReport {
+    reports {
+        xml.enabled = true // coveralls plugin depends on xml format report
+        html.enabled = true
+    }
 }
 
 allprojects {
