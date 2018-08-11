@@ -23,7 +23,7 @@ jacocoTestReport {
 sonarqube {
     properties {
         property "sonar.projectName", "Exercises and Solutions from Agile Software Development Principles, Patterns, and Practices in Groovy"
-        property "sonar.projectKey", "agile-software-development-principles-patterns-and-practices-groovy"
+        property "sonar.projectKey", "thomashan.github.io:agile-software-development-principles-patterns-and-practices-groovy"
     }
 }
 
