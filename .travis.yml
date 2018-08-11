@@ -6,3 +6,6 @@ jdk:
 addons:
   sonarcloud:
     organization: "thomashan-github"
+
+script:
+  - ./gradlew --scan build sonarqube
