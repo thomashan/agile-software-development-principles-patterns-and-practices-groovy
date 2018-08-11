@@ -15,7 +15,9 @@ allprojects {
     group "thomashan.github.io"
 
     dependencies {
-        compile "org.codehaus.groovy:groovy-all:2.5.1"
+        compile("org.codehaus.groovy:groovy-all:2.5.1") {
+            exclude(group: "junit")
+        }
 
         testCompile "org.junit.jupiter:junit-jupiter-api:5.2.0"
         testRuntime "org.junit.jupiter:junit-jupiter-engine:5.2.0"
