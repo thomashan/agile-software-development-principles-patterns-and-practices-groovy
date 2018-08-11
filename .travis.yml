@@ -8,7 +8,7 @@ addons:
     organization: "thomashan-github"
 
 script:
-  - ./gradlew --scan -s build sonarqube
+  - ./gradlew --scan -s build sonarqube jacocoTestReport
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
