@@ -8,4 +8,4 @@ addons:
     organization: "thomashan-github"
 
 script:
-  - ./gradlew --scan build sonarqube
+  - ./gradlew --scan -s build sonarqube
