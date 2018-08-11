@@ -2,7 +2,7 @@ plugins {
     id "groovy"
     id "eclipse"
     id "idea"
-    id "org.sonarqube" version "2.6"
+    id "org.sonarqube" version "2.6.2"
 }
 
 allprojects {

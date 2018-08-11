@@ -2,3 +2,7 @@ language: groovy
 
 jdk:
 - openjdk8
+
+addons:
+  sonarcloud:
+    organization: "thomashan-github"
