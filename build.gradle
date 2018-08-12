@@ -33,7 +33,7 @@ allprojects {
 
     dependencies {
         compile("org.codehaus.groovy:groovy-all:2.5.1") {
-//            exclude(module: "junit")
+            exclude(module: "junit")
         }
 
         testCompile "org.junit.jupiter:junit-jupiter-api:5.2.0"
