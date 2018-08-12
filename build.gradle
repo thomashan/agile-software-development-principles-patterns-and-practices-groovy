@@ -16,6 +16,7 @@ sonarqube {
     }
 }
 
+version project.VERSION
 
 allprojects {
     apply plugin: "groovy"
