@@ -13,18 +13,22 @@ The is an uplift to the original solutions using
 
 ## Payroll case study
 There are a lot of implementation on github.
+* https://github.com/dnsdurham/Payroll (c#)
+* https://github.com/Kornetzke/PayrollApplication (c#)
+* https://github.com/rmilovic90/payroll-kata (c#)
+* https://github.com/FreekPaans/PPPPayrollCaseStudy (c#)
+
 * https://github.com/FreemanZhang/payroll-case-study (java)
 * https://github.com/Ookami86/payroll-casestudy (java)
-* https://github.com/dnsdurham/Payroll (c#)
 * https://github.com/martinrist/ppp-payroll-case-study (java)
 * https://github.com/haridaniel/PayrollCaseStudy (java)
-* https://github.com/excitement-engineer/payroll (kotlin)
-* https://github.com/mehicdado/payroll-case-study-php (php)
-* https://github.com/FreekPaans/PPPPayrollCaseStudy (c#)
 * https://github.com/grochon/payroll (java)
 * https://github.com/mickeycj/payroll-case-study-gui (java)
 * https://github.com/lvguowei/payroll-case-study (java)
 * https://github.com/dubanerjee/payroll-case-study (java)
+
+* https://github.com/excitement-engineer/payroll (kotlin)
+* https://github.com/mehicdado/payroll-case-study-php (php)
+
 * https://github.com/jleo3/payroll (ruby)
-* https://github.com/Kornetzke/PayrollApplication (c#)
-* https://github.com/rmilovic90/payroll-kata (c#)
+
