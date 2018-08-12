@@ -1,23 +1,12 @@
 plugins {
-    id "groovy"
-    id "eclipse"
-    id "idea"
     id "com.gradle.build-scan" version "1.15.2"
     id "org.sonarqube" version "2.6.2"
-    id "jacoco"
-    id "com.github.kt3k.coveralls" version '2.6.3'
+    id "com.github.kt3k.coveralls" version "2.6.3"
 }
 
 buildScan {
     termsOfServiceUrl = "https://gradle.com/terms-of-service"
     termsOfServiceAgree = "yes"
-}
-
-jacocoTestReport {
-    reports {
-        xml.enabled = true // coveralls plugin depends on xml format report
-        html.enabled = true
-    }
 }
 
 sonarqube {
@@ -27,7 +16,14 @@ sonarqube {
     }
 }
 
+version project.VERSION
+
 allprojects {
+    apply plugin: "groovy"
+    apply plugin: "eclipse"
+    apply plugin: "idea"
+    apply plugin: "jacoco"
+
     repositories {
         mavenLocal()
         mavenCentral()
@@ -51,5 +47,12 @@ allprojects {
 
     test {
         useJUnitPlatform()
+    }
+
+    jacocoTestReport {
+        reports {
+            xml.enabled = true // coveralls plugin depends on xml format report
+            html.enabled = true
+        }
     }
 }
