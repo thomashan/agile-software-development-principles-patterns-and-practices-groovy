@@ -11,9 +11,15 @@ class AddCommissionedEmployee extends AddEmployeeTransaction {
     final double monthlySalary
     final double commissionRate
 
+    AddCommissionedEmployee(int employeeId, String name, String address, double monthlySalary, double commissionRate) {
+        super(employeeId, name, address)
+        this.monthlySalary = monthlySalary
+        this.commissionRate = commissionRate
+    }
+
     @Override
     PaymentClassification getPaymentClassification() {
-        return new CommissionedClassification()
+        return new CommissionedClassification(monthlySalary, commissionRate)
     }
 
     @Override

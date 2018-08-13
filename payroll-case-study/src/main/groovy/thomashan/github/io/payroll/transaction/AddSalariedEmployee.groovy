@@ -8,7 +8,6 @@ import thomashan.github.io.payroll.schedule.MonthlySchedule
 import thomashan.github.io.payroll.schedule.PaymentSchedule
 
 @Canonical
-@TupleConstructor(includeSuperFields = true)
 class AddSalariedEmployee extends AddEmployeeTransaction {
     final double monthlySalary
 
