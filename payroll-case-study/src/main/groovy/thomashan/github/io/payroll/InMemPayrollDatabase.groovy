@@ -13,4 +13,13 @@ class InMemPayrollDatabase implements PayrollDatabase {
     Employee getEmployee(int employeeId) {
         return employees.get(employeeId)
     }
+
+    @Override
+    void deleteEmployee(int employeeId) {
+        if (!employees.containsKey(employeeId)) {
+            throw new RuntimeException("Employee ID doesn't exist")
+        }
+
+        employees.remove(employeeId)
+    }
 }
