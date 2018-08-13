@@ -1,43 +1,68 @@
 package thomashan.github.io.transaction
 
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import thomashan.github.io.payroll.Employee
 import thomashan.github.io.payroll.InMemPayrollDatabase
 import thomashan.github.io.payroll.PayrollDatabase
 import thomashan.github.io.payroll.classification.HourlyClassification
-import thomashan.github.io.payroll.classification.PaymentClassification
 import thomashan.github.io.payroll.method.HoldMethod
-import thomashan.github.io.payroll.method.PaymentMethod
-import thomashan.github.io.payroll.schedule.PaymentSchedule
 import thomashan.github.io.payroll.schedule.WeeklySchedule
 import thomashan.github.io.payroll.transaction.AddHourlyEmployee
 import thomashan.github.io.payroll.transaction.Transaction
 
 class AddHourlyEmployeeTests {
     private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
+    private Transaction transaction
+    private int employeeId = 1
+    private String name = "Hourly"
+    private String address = "HourlyHome"
+    private double hourlyRate = 100.0
+
+    @BeforeEach
+    void setUp() {
+        transaction = new AddHourlyEmployee(employeeId, name, address, hourlyRate)
+    }
 
     @Test
-    void "add hourly employee"() {
-        int employeeId = 1
-        Transaction transaction = new AddHourlyEmployee(employeeId, "Hourly", "HourlyHome", 100.0)
+    void "add hourly employee should return correct employee name"() {
         transaction.execute()
 
-        Employee employee = payrollDatabase.getEmployee(employeeId)
+        assert payrollDatabase.getEmployee(employeeId).name == name
+    }
 
-        assert employee.name == "Hourly"
-        assert employee.address == "HourlyHome"
+    @Test
+    void "add hourly employee should return correct employee address"() {
+        transaction.execute()
 
-        PaymentClassification paymentClassification = employee.paymentClassification
-        assert paymentClassification instanceof HourlyClassification
+        assert payrollDatabase.getEmployee(employeeId).address == address
+    }
 
-        HourlyClassification hourlyClassification = (HourlyClassification) paymentClassification
+    @Test
+    void "add hourly employee should return correct payment classification"() {
+        transaction.execute()
 
-        assert hourlyClassification.hourlyRate == 100.0
+        assert payrollDatabase.getEmployee(employeeId).paymentClassification instanceof HourlyClassification
+    }
 
-        PaymentSchedule paymentSchedule = employee.paymentSchedule
-        assert paymentSchedule instanceof WeeklySchedule
+    @Test
+    void "add hourly employee should return correct salary"() {
+        transaction.execute()
+        HourlyClassification hourlyClassification = (HourlyClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
 
-        PaymentMethod paymentMethod = employee.paymentMethod
-        assert paymentMethod instanceof HoldMethod
+        assert hourlyClassification.hourlyRate == hourlyRate
+    }
+
+    @Test
+    void "add hourly employee should return correct payment schedule"() {
+        transaction.execute()
+
+        assert payrollDatabase.getEmployee(employeeId).paymentSchedule instanceof WeeklySchedule
+    }
+
+    @Test
+    void "add hourly employee should return correct payment method"() {
+        transaction.execute()
+
+        assert payrollDatabase.getEmployee(employeeId).paymentMethod instanceof HoldMethod
     }
 }

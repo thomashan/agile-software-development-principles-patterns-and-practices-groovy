@@ -1,44 +1,77 @@
 package thomashan.github.io.transaction
 
+import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import thomashan.github.io.payroll.Employee
 import thomashan.github.io.payroll.InMemPayrollDatabase
 import thomashan.github.io.payroll.PayrollDatabase
 import thomashan.github.io.payroll.classification.CommissionedClassification
-import thomashan.github.io.payroll.classification.PaymentClassification
 import thomashan.github.io.payroll.method.HoldMethod
-import thomashan.github.io.payroll.method.PaymentMethod
 import thomashan.github.io.payroll.schedule.BiweeklySchedule
-import thomashan.github.io.payroll.schedule.PaymentSchedule
 import thomashan.github.io.payroll.transaction.AddCommissionedEmployee
 import thomashan.github.io.payroll.transaction.Transaction
 
 class AddCommissionedEmployeeTests {
     private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
+    private Transaction transaction
+    private int employeeId = 1
+    private String name = "Commissioned"
+    private String address = "CommissionedHome"
+    private double salary = 1000.0
+    private double commissionRate = 20.0
+
+    @BeforeEach
+    void setUp() {
+        transaction = new AddCommissionedEmployee(employeeId, name, address, salary, commissionRate)
+    }
 
     @Test
-    void "add commissioned employee"() {
-        int employeeId = 1
-        Transaction transaction = new AddCommissionedEmployee(employeeId, "Commissioned", "CommissionedHome", 1000.00, 20.0)
+    void "add commissioned employee should return correct employee name"() {
         transaction.execute()
 
-        Employee employee = payrollDatabase.getEmployee(employeeId)
+        assert payrollDatabase.getEmployee(employeeId).name == name
+    }
 
-        assert employee.name == "Commissioned"
-        assert employee.address == "CommissionedHome"
+    @Test
+    void "add commissioned employee should return correct employee address"() {
+        transaction.execute()
 
-        PaymentClassification paymentClassification = employee.paymentClassification
-        assert paymentClassification instanceof CommissionedClassification
+        assert payrollDatabase.getEmployee(employeeId).address == address
+    }
 
-        CommissionedClassification commissionedClassification = (CommissionedClassification) paymentClassification
+    @Test
+    void "add commissioned employee should return correct payment classification"() {
+        transaction.execute()
 
-        assert commissionedClassification.salary == 1000.00
-        assert commissionedClassification.commissionRate == 20.0
+        assert payrollDatabase.getEmployee(employeeId).paymentClassification instanceof CommissionedClassification
+    }
 
-        PaymentSchedule paymentSchedule = employee.paymentSchedule
-        assert paymentSchedule instanceof BiweeklySchedule
+    @Test
+    void "add commissioned employee should return correct salary"() {
+        transaction.execute()
+        CommissionedClassification commissionedClassification = (CommissionedClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
 
-        PaymentMethod paymentMethod = employee.paymentMethod
-        assert paymentMethod instanceof HoldMethod
+        assert commissionedClassification.salary == salary
+    }
+
+    @Test
+    void "add commissioned employee should return correct commission rate"() {
+        transaction.execute()
+        CommissionedClassification commissionedClassification = (CommissionedClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
+
+        assert commissionedClassification.commissionRate == commissionRate
+    }
+
+    @Test
+    void "add commissioned employee should return correct payment schedule"() {
+        transaction.execute()
+
+        assert payrollDatabase.getEmployee(employeeId).paymentSchedule instanceof BiweeklySchedule
+    }
+
+    @Test
+    void "add commissioned employee should return correct payment method"() {
+        transaction.execute()
+
+        assert payrollDatabase.getEmployee(employeeId).paymentMethod instanceof HoldMethod
     }
 }
