@@ -1,12 +1,9 @@
-package thomashan.github.io.transaction
+package thomashan.github.io.payroll.transaction
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.InMemPayrollDatabase
 import thomashan.github.io.payroll.PayrollDatabase
-import thomashan.github.io.payroll.transaction.AddSalariedEmployee
-import thomashan.github.io.payroll.transaction.DeleteEmployee
-import thomashan.github.io.payroll.transaction.Transaction
 
 import static org.junit.jupiter.api.Assertions.assertThrows
 
