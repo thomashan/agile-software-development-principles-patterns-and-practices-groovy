@@ -1,4 +1,4 @@
-package thomashan.github.io.transaction
+package thomashan.github.io.payroll.transaction
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -7,8 +7,6 @@ import thomashan.github.io.payroll.PayrollDatabase
 import thomashan.github.io.payroll.classification.HourlyClassification
 import thomashan.github.io.payroll.method.HoldMethod
 import thomashan.github.io.payroll.schedule.WeeklySchedule
-import thomashan.github.io.payroll.transaction.AddHourlyEmployee
-import thomashan.github.io.payroll.transaction.Transaction
 
 class AddHourlyEmployeeTests {
     private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
