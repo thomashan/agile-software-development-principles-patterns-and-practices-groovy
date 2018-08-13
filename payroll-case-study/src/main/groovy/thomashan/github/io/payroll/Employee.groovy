@@ -1,4 +1,4 @@
-package thomashan.github.io
+package thomashan.github.io.payroll
 
 import groovy.transform.Canonical
 import groovy.transform.TupleConstructor

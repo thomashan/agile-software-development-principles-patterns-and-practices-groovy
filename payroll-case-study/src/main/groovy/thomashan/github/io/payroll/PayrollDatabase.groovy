@@ -1,4 +1,4 @@
-package thomashan.github.io
+package thomashan.github.io.payroll
 
 trait PayrollDatabase {
     abstract void addEmployee(Employee employee)
