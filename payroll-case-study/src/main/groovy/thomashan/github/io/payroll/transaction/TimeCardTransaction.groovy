@@ -31,6 +31,8 @@ class TimeCardTransaction implements Transaction {
             } else {
                 throw new RuntimeException("Tried to add tim card to non-hourly employee")
             }
+        } else {
+            throw new RuntimeException("No such employee")
         }
     }
 }

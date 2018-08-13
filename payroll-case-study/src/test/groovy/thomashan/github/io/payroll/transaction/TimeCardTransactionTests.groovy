@@ -27,10 +27,8 @@ class TimeCardTransactionTests {
     }
 
     @Test
-    void "time card transaction on nonexistent employee should do nothing"() {
-        new TimeCardTransaction(employeeId, today, 8).execute()
-
-        assert payrollDatabase.getEmployee(employeeId) == null
+    void "time card transaction on nonexistent employee should throw an error"() {
+        assertThrows(RuntimeException, { new TimeCardTransaction(employeeId, today, 8).execute() })
     }
 
     @Test
@@ -49,13 +47,13 @@ class TimeCardTransactionTests {
     void "time card transaction on salaried employee should throw an error"() {
         new AddSalariedEmployee(employeeId, "AnonName", "AnonAddress", 1000).execute()
 
-        assertThrows(RuntimeException, { new TimeCardTransaction(employeeId, LocalDate.now(), 8).execute() })
+        assertThrows(RuntimeException, { new TimeCardTransaction(employeeId, today, 8).execute() })
     }
 
     @Test
     void "time card transaction on commissioned employee should throw an error"() {
         new AddCommissionedEmployee(employeeId, "AnonName", "AnonAddress", 1000, 20).execute()
 
-        assertThrows(RuntimeException, { new TimeCardTransaction(employeeId, LocalDate.now(), 8).execute() })
+        assertThrows(RuntimeException, { new TimeCardTransaction(employeeId, today, 8).execute() })
     }
 }
