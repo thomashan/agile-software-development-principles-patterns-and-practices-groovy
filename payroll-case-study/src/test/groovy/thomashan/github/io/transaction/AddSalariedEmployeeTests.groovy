@@ -2,7 +2,8 @@ package thomashan.github.io.transaction
 
 import org.junit.jupiter.api.Test
 import thomashan.github.io.Employee
-import thomashan.github.io.GpayrollDatabase
+import thomashan.github.io.InMemPayrollDatabase
+import thomashan.github.io.PayrollDatabase
 import thomashan.github.io.payroll.classification.PaymentClassification
 import thomashan.github.io.payroll.classification.SalariedClassification
 import thomashan.github.io.payroll.method.HoldMethod
@@ -13,13 +14,15 @@ import thomashan.github.io.payroll.transaction.AddSalariedEmployee
 import thomashan.github.io.payroll.transaction.Transaction
 
 class AddSalariedEmployeeTests {
+    private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
+
     @Test
     void "add salaried employee"() {
         int employeeId = 1
         Transaction transaction = new AddSalariedEmployee(employeeId, "Bob", "Home", 1000.00)
         transaction.execute()
 
-        Employee employee = GpayrollDatabase.getEmployee(employeeId)
+        Employee employee = payrollDatabase.getEmployee(employeeId)
 
         assert employee.name == "Bob"
         assert employee.address == "Home"
