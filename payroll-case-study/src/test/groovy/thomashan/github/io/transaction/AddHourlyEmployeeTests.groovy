@@ -45,7 +45,7 @@ class AddHourlyEmployeeTests {
     }
 
     @Test
-    void "add hourly employee should return correct salary"() {
+    void "add hourly employee should return correct hourlyRate"() {
         transaction.execute()
         HourlyClassification hourlyClassification = (HourlyClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
 
