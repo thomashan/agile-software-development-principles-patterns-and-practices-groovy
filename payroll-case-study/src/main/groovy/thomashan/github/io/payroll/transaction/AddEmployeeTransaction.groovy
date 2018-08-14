@@ -10,7 +10,6 @@ import thomashan.github.io.payroll.schedule.PaymentSchedule
 
 @TupleConstructor
 abstract class AddEmployeeTransaction implements Transaction {
-    private final PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
     final int employeeId
     final String name
     final String address

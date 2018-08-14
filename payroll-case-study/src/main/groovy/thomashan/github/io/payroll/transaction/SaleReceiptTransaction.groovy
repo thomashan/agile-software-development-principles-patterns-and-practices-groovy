@@ -1,15 +1,12 @@
 package thomashan.github.io.payroll.transaction
 
 import thomashan.github.io.payroll.Employee
-import thomashan.github.io.payroll.InMemPayrollDatabase
-import thomashan.github.io.payroll.PayrollDatabase
 import thomashan.github.io.payroll.SalesReceipt
 import thomashan.github.io.payroll.classification.CommissionedClassification
 
 import java.time.LocalDate
 
 class SaleReceiptTransaction implements Transaction {
-    private final PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
     int employeeId
     LocalDate date
     double amount
