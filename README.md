@@ -12,8 +12,9 @@ The is an uplift to the original solutions using
 * junit5
 
 Following tech is used improve the project
+
 | Methodology   | Tool       | Web                   |
-| :---          | :---       | :---                  |
+| ---           | ---        | ---                   |
 | CI            | travisci   | https://travis-ci.org |
 | Code analysis | Sonarcloud | https://sonarcloud.io |
 | Code analysis | codecov    | https://codecov.io    |
