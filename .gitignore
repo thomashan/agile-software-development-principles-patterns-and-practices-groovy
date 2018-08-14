@@ -1,4 +1,11 @@
-*.iml
 .gradle
 build
 out
+bin
+
+*.iml
+.idea
+
+.classpath
+.project
+.settings
