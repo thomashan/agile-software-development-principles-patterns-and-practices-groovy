@@ -6,4 +6,8 @@ trait PayrollDatabase {
     abstract Employee getEmployee(int employeeId)
 
     abstract void deleteEmployee(int employeeId)
+
+    abstract Employee getUnionMember(int memberId)
+
+    abstract void addUnionMember(int memberId, Employee employee)
 }

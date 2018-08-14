@@ -2,6 +2,7 @@ package thomashan.github.io.payroll
 
 import groovy.transform.Canonical
 import groovy.transform.TupleConstructor
+import thomashan.github.io.payroll.affiliation.Affiliation
 import thomashan.github.io.payroll.classification.PaymentClassification
 import thomashan.github.io.payroll.method.PaymentMethod
 import thomashan.github.io.payroll.schedule.PaymentSchedule
@@ -15,4 +16,5 @@ class Employee {
     final PaymentClassification paymentClassification
     final PaymentSchedule paymentSchedule
     final PaymentMethod paymentMethod
+    Optional<Affiliation> affiliation = Optional.empty()
 }

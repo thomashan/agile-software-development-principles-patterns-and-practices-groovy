@@ -40,3 +40,5 @@ There are a lot of implementation on github.
 
 * https://github.com/jleo3/payroll (ruby)
 
+###Improvements
+* Use of optional in favour of null
