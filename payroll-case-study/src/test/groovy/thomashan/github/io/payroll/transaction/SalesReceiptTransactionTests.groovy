@@ -2,6 +2,7 @@ package thomashan.github.io.payroll.transaction
 
 import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
+import thomashan.github.io.payroll.Employee
 import thomashan.github.io.payroll.InMemPayrollDatabase
 import thomashan.github.io.payroll.PayrollDatabase
 
@@ -16,10 +17,9 @@ class SalesReceiptTransactionTests {
 
     @AfterEach
     void tearDown() {
-        try {
+        Employee employee = payrollDatabase.getEmployee(employeeId)
+        if (employee) {
             payrollDatabase.deleteEmployee(employeeId)
-        } catch (ex) {
-
         }
     }
 
