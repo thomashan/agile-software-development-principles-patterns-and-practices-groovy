@@ -29,7 +29,7 @@ class TimeCardTransaction implements Transaction {
                 HourlyClassification hourlyClassification = employee.paymentClassification
                 hourlyClassification.addTimeCard(new TimeCard(date, hours))
             } else {
-                throw new RuntimeException("Tried to add tim card to non-hourly employee")
+                throw new RuntimeException("Error adding time card to non-hourly employee")
             }
         } else {
             throw new RuntimeException("No such employee")

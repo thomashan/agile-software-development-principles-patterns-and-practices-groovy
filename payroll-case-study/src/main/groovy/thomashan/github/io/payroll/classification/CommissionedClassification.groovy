@@ -1,9 +1,18 @@
 package thomashan.github.io.payroll.classification
 
-import groovy.transform.TupleConstructor
+import thomashan.github.io.payroll.SalesReceipt
 
-@TupleConstructor
-class CommissionedClassification extends PaymentClassification {
+class CommissionedClassification implements PaymentClassification {
+    private final List<SalesReceipt> salesReceipts = []
     final double salary
     final double commissionRate
+
+    CommissionedClassification(double salary, double commissionRate) {
+        this.salary = salary
+        this.commissionRate = commissionRate
+    }
+
+    void addSalesReceipt(SalesReceipt salesReciept) {
+        salesReceipts.add(salesReciept)
+    }
 }

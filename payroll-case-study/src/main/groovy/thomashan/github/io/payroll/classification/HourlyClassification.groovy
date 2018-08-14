@@ -6,7 +6,7 @@ import thomashan.github.io.payroll.TimeCard
 import java.time.LocalDate
 
 @Immutable
-class HourlyClassification extends PaymentClassification {
+class HourlyClassification implements PaymentClassification {
     private Map<LocalDate, TimeCard> timeCards = [:]
     double hourlyRate
 
