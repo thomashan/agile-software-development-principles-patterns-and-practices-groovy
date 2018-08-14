@@ -16,5 +16,5 @@ class Employee {
     final PaymentClassification paymentClassification
     final PaymentSchedule paymentSchedule
     final PaymentMethod paymentMethod
-    Optional<Affiliation> affiliation
+    Optional<Affiliation> affiliation = Optional.empty()
 }
