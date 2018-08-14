@@ -22,16 +22,10 @@ class ServiceChargeTransaction implements Transaction {
     @Override
     void execute() {
         Employee employee = payrollDatabase.getUnionMember(memberId)
-
-        if (employee) {
-            if (!employee.affiliation.present || !(employee.affiliation.get() instanceof UnionAffiliation)) {
-                throw new RuntimeException("Error adding service charge to non union member")
-            }
-
-            ((UnionAffiliation) employee.affiliation.get()).addServiceCharge(date, amount)
-
-        } else {
+        if (!employee) {
             throw new RuntimeException("No such union member")
         }
+
+        ((UnionAffiliation) employee.affiliation.get()).addServiceCharge(date, amount)
     }
 }
