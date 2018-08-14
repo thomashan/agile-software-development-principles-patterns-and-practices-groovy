@@ -4,6 +4,6 @@ import groovy.transform.TupleConstructor
 import thomashan.github.io.payroll.classification.PaymentClassification
 
 @TupleConstructor
-class SalariedClassification extends PaymentClassification {
+class SalariedClassification implements PaymentClassification {
     final double salary
 }

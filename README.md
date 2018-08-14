@@ -11,6 +11,14 @@ The is an uplift to the original solutions using
 * gradle
 * junit5
 
+Following tech is used improve the project
+| Methodology   | Tool       | Web                   |
+| :---          | :---       | :---                  |
+| CI            | travisci   | https://travis-ci.org |
+| Code analysis | Sonarcloud | https://sonarcloud.io |
+| Code analysis | codecov    | https://codecov.io    |
+| Code analysis | coveralls  | https://coveralls.io  |
+
 ## Payroll case study
 There are a lot of implementation on github.
 * https://github.com/dnsdurham/Payroll (c#)
