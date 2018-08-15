@@ -27,8 +27,8 @@ class ServiceChargeTransactionTests implements TransactionTests {
     @Test
     void "add service charge transaction on an existing employee with union affiliation should execute without error"() {
         Employee employee = payrollDatabase.getEmployee(employeeId)
-        employee.affiliation = Optional.of(new UnionAffiliation())
         payrollDatabase.addUnionMember(memberId, employee)
+        employee.affiliation = Optional.of(new UnionAffiliation(memberId, 10))
         new ServiceChargeTransaction(employeeId, today, charge).execute()
 
         assert ((UnionAffiliation) employee.affiliation.get()).getServiceCharge(today).amount == charge

@@ -2,11 +2,8 @@ package thomashan.github.io.payroll
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import thomashan.github.io.payroll.affiliation.NoAffiliation
 import thomashan.github.io.payroll.affiliation.UnionAffiliation
 import thomashan.github.io.payroll.transaction.AddHourlyEmployee
-
-import static org.junit.jupiter.api.Assertions.assertThrows
 
 class InMemPayrollDatabaseTests {
     private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
@@ -22,20 +19,8 @@ class InMemPayrollDatabaseTests {
     }
 
     @Test
-    void "addUnionMember should throw exception if employee has no affiliation"() {
-        assertThrows(RuntimeException, { payrollDatabase.addUnionMember(memberId, employee) })
-    }
-
-    @Test
-    void "addUnionMember should throw exception if employee is not affiliated with union"() {
-        employee.affiliation = Optional.of(new NoAffiliation())
-
-        assertThrows(RuntimeException, { payrollDatabase.addUnionMember(memberId, employee) })
-    }
-
-    @Test
     void "addUnionMember should add to union if employee is affiliated with union"() {
-        employee.affiliation = Optional.of(new UnionAffiliation())
+        employee.affiliation = Optional.of(new UnionAffiliation(memberId, 10))
 
         payrollDatabase.addUnionMember(memberId, employee)
     }

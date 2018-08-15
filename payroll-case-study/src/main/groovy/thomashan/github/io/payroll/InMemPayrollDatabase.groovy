@@ -1,7 +1,5 @@
 package thomashan.github.io.payroll
 
-import thomashan.github.io.payroll.affiliation.UnionAffiliation
-
 @Singleton
 class InMemPayrollDatabase implements PayrollDatabase {
     private Map<Integer, Employee> employees = [:]
@@ -33,10 +31,11 @@ class InMemPayrollDatabase implements PayrollDatabase {
 
     @Override
     void addUnionMember(int memberId, Employee employee) {
-        if (!employee.affiliation.present || !(employee.affiliation.get() instanceof UnionAffiliation)) {
-            throw new RuntimeException("The employee is not associated with an union")
-        }
-
         unionMembers.put(memberId, employee)
+    }
+
+    @Override
+    void removeUnionMember(int memberId) {
+        unionMembers.remove(memberId)
     }
 }
