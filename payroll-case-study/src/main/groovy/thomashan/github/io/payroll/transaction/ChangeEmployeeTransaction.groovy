@@ -19,5 +19,5 @@ abstract class ChangeEmployeeTransaction implements Transaction {
         change(employee)
     }
 
-    abstract protected void change(Employee employee)
+    abstract void change(Employee employee)
 }

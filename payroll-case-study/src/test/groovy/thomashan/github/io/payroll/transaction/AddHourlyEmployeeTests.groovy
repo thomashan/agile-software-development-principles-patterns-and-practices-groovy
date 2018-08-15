@@ -2,16 +2,12 @@ package thomashan.github.io.payroll.transaction
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import thomashan.github.io.payroll.InMemPayrollDatabase
-import thomashan.github.io.payroll.PayrollDatabase
 import thomashan.github.io.payroll.classification.HourlyClassification
 import thomashan.github.io.payroll.method.HoldMethod
 import thomashan.github.io.payroll.schedule.WeeklySchedule
 
-class AddHourlyEmployeeTests {
-    private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
+class AddHourlyEmployeeTests implements TransactionTests {
     private Transaction transaction
-    private int employeeId = 1
     private String name = "Hourly"
     private String address = "HourlyHome"
     private double hourlyRate = 100.0

@@ -1,4 +1,4 @@
 package thomashan.github.io.payroll.method
 
-class PaymentMethod {
+trait PaymentMethod {
 }

@@ -1,6 +1,6 @@
 package thomashan.github.io.payroll.classification
 
-import jdk.nashorn.internal.ir.annotations.Immutable
+import groovy.transform.Immutable
 import thomashan.github.io.payroll.TimeCard
 
 import java.time.LocalDate
@@ -9,10 +9,6 @@ import java.time.LocalDate
 class HourlyClassification implements PaymentClassification {
     private Map<LocalDate, TimeCard> timeCards = [:]
     double hourlyRate
-
-    HourlyClassification(double hourlyRate) {
-        this.hourlyRate = hourlyRate
-    }
 
     void addTimeCard(TimeCard timeCard) {
         timeCards.put(timeCard.date, timeCard)

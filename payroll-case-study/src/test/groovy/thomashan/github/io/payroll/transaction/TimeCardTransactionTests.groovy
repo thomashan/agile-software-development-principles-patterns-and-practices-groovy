@@ -1,10 +1,7 @@
 package thomashan.github.io.payroll.transaction
 
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
-import thomashan.github.io.payroll.InMemPayrollDatabase
-import thomashan.github.io.payroll.PayrollDatabase
 import thomashan.github.io.payroll.TimeCard
 import thomashan.github.io.payroll.classification.HourlyClassification
 
@@ -12,19 +9,8 @@ import java.time.LocalDate
 
 import static org.junit.jupiter.api.Assertions.assertThrows
 
-class TimeCardTransactionTests {
-    private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
-    private int employeeId = 1
+class TimeCardTransactionTests implements TransactionTests {
     private LocalDate today = LocalDate.now()
-
-    @AfterEach
-    void tearDown() {
-        try {
-            payrollDatabase.deleteEmployee(employeeId)
-        } catch (ex) {
-
-        }
-    }
 
     @Test
     void "time card transaction on nonexistent employee should throw an error"() {
