@@ -1,0 +1,24 @@
+package thomashan.github.io.payroll.schedule
+
+import org.junit.jupiter.api.Test
+
+import java.time.LocalDate
+
+class BiweeklyScheduleTests {
+    private BiweeklySchedule biweeklySchedule = new BiweeklySchedule()
+
+    @Test
+    void "isPayDate should return true if it is friday on second week"() {
+        assert biweeklySchedule.isPayDate(new LocalDate(2018, 1, 12))
+    }
+
+    @Test
+    void "isPayDate should return false if it is not friday on first week"() {
+        assert !biweeklySchedule.isPayDate(new LocalDate(2018, 1, 5))
+    }
+
+    @Test
+    void "isPayDate should return false if it is not friday"() {
+        assert !biweeklySchedule.isPayDate(new LocalDate(2018, 1, 10))
+    }
+}

@@ -1,4 +1,7 @@
 package thomashan.github.io.payroll.schedule
 
-class PaymentSchedule {
+import java.time.LocalDate
+
+trait PaymentSchedule {
+    abstract boolean isPayDate(LocalDate payDate)
 }
