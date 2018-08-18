@@ -1,6 +1,7 @@
-package thomashan.github.io.payroll.transaction
+package thomashan.github.io.payroll.transaction.delete
 
 import groovy.transform.TupleConstructor
+import thomashan.github.io.payroll.transaction.Transaction
 
 @TupleConstructor
 class DeleteEmployee implements Transaction {

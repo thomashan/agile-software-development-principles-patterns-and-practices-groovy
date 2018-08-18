@@ -1,6 +1,9 @@
 package thomashan.github.io.payroll.transaction
 
 import org.junit.jupiter.api.Test
+import thomashan.github.io.payroll.transaction.add.AddCommissionedEmployee
+import thomashan.github.io.payroll.transaction.add.AddHourlyEmployee
+import thomashan.github.io.payroll.transaction.add.AddSalariedEmployee
 
 import java.time.LocalDate
 

@@ -1,7 +1,10 @@
-package thomashan.github.io.payroll.transaction
+package thomashan.github.io.payroll.transaction.update
 
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
+import thomashan.github.io.payroll.transaction.TransactionTests
+import thomashan.github.io.payroll.transaction.add.AddSalariedEmployee
+import thomashan.github.io.payroll.transaction.update.ChangeEmployeeTransaction
 
 import static org.junit.jupiter.api.Assertions.assertThrows
 

@@ -1,10 +1,13 @@
-package thomashan.github.io.payroll.transaction
+package thomashan.github.io.payroll.transaction.add
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.classification.HourlyClassification
 import thomashan.github.io.payroll.method.HoldMethod
 import thomashan.github.io.payroll.schedule.WeeklySchedule
+import thomashan.github.io.payroll.transaction.Transaction
+import thomashan.github.io.payroll.transaction.TransactionTests
+import thomashan.github.io.payroll.transaction.add.AddHourlyEmployee
 
 class AddHourlyEmployeeTests implements TransactionTests {
     private Transaction transaction

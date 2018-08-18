@@ -1,7 +1,8 @@
-package thomashan.github.io.payroll.transaction
+package thomashan.github.io.payroll.transaction.update
 
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
+import thomashan.github.io.payroll.transaction.add.AddSalariedEmployee
 
 class ChangeNameTransactionTests implements ChangeEmployeeTransactionTests {
     @Test

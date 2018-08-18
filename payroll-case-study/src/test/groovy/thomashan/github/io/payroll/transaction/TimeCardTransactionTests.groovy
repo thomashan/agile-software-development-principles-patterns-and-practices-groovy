@@ -4,6 +4,9 @@ import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
 import thomashan.github.io.payroll.TimeCard
 import thomashan.github.io.payroll.classification.HourlyClassification
+import thomashan.github.io.payroll.transaction.add.AddCommissionedEmployee
+import thomashan.github.io.payroll.transaction.add.AddHourlyEmployee
+import thomashan.github.io.payroll.transaction.add.AddSalariedEmployee
 
 import java.time.LocalDate
 

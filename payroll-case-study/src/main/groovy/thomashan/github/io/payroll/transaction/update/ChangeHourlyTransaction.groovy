@@ -1,4 +1,4 @@
-package thomashan.github.io.payroll.transaction
+package thomashan.github.io.payroll.transaction.update
 
 import thomashan.github.io.payroll.classification.HourlyClassification
 import thomashan.github.io.payroll.classification.PaymentClassification

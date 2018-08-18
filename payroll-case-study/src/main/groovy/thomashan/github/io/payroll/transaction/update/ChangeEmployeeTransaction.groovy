@@ -1,6 +1,7 @@
-package thomashan.github.io.payroll.transaction
+package thomashan.github.io.payroll.transaction.update
 
 import thomashan.github.io.payroll.Employee
+import thomashan.github.io.payroll.transaction.Transaction
 
 abstract class ChangeEmployeeTransaction implements Transaction {
     final int employeeId

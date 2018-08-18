@@ -1,9 +1,11 @@
-package thomashan.github.io.payroll.transaction
+package thomashan.github.io.payroll.transaction.update
 
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
 import thomashan.github.io.payroll.classification.SalariedClassification
 import thomashan.github.io.payroll.schedule.MonthlySchedule
+import thomashan.github.io.payroll.transaction.add.AddHourlyEmployee
+import thomashan.github.io.payroll.transaction.add.AddSalariedEmployee
 
 class ChangeSalariedTransactionTests implements ChangeEmployeeTransactionTests {
     private double newSalary = 2000

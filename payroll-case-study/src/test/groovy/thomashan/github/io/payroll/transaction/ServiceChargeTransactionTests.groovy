@@ -4,6 +4,7 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
 import thomashan.github.io.payroll.affiliation.UnionAffiliation
+import thomashan.github.io.payroll.transaction.add.AddHourlyEmployee
 
 import java.time.LocalDate
 
