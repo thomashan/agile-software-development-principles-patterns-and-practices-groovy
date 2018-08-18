@@ -1,17 +1,16 @@
-package thomashan.github.io.payroll.transaction
+package thomashan.github.io.payroll.transaction.add
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import thomashan.github.io.payroll.InMemPayrollDatabase
-import thomashan.github.io.payroll.PayrollDatabase
 import thomashan.github.io.payroll.classification.CommissionedClassification
 import thomashan.github.io.payroll.method.HoldMethod
 import thomashan.github.io.payroll.schedule.BiweeklySchedule
+import thomashan.github.io.payroll.transaction.Transaction
+import thomashan.github.io.payroll.transaction.TransactionTests
+import thomashan.github.io.payroll.transaction.add.AddCommissionedEmployee
 
-class AddCommissionedEmployeeTests {
-    private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
+class AddCommissionedEmployeeTests implements TransactionTests {
     private Transaction transaction
-    private int employeeId = 1
     private String name = "Commissioned"
     private String address = "CommissionedHome"
     private double salary = 1000.0

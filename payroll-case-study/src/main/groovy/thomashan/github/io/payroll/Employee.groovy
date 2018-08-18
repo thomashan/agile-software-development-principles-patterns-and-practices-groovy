@@ -11,10 +11,10 @@ import thomashan.github.io.payroll.schedule.PaymentSchedule
 @TupleConstructor
 class Employee {
     final int employeeId
-    final String name
-    final String address
-    final PaymentClassification paymentClassification
-    final PaymentSchedule paymentSchedule
-    final PaymentMethod paymentMethod
+    String name
+    String address
+    PaymentClassification paymentClassification
+    PaymentSchedule paymentSchedule
+    PaymentMethod paymentMethod
     Optional<Affiliation> affiliation = Optional.empty()
 }

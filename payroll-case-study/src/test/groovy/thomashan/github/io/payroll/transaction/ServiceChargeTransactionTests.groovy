@@ -1,20 +1,16 @@
 package thomashan.github.io.payroll.transaction
 
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
-import thomashan.github.io.payroll.InMemPayrollDatabase
-import thomashan.github.io.payroll.PayrollDatabase
 import thomashan.github.io.payroll.affiliation.UnionAffiliation
+import thomashan.github.io.payroll.transaction.add.AddHourlyEmployee
 
 import java.time.LocalDate
 
 import static org.junit.jupiter.api.Assertions.assertThrows
 
-class ServiceChargeTransactionTests {
-    private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
-    private int employeeId = 1
+class ServiceChargeTransactionTests implements TransactionTests {
     private int memberId = 1
     private LocalDate today = LocalDate.now()
     private double charge = 10
@@ -22,14 +18,6 @@ class ServiceChargeTransactionTests {
     @BeforeEach
     void setUp() {
         new AddHourlyEmployee(employeeId, "AnonName", "AnonAddress", 10).execute()
-    }
-
-    @AfterEach
-    void tearDown() {
-        Employee employee = payrollDatabase.getEmployee(employeeId)
-        if (employee) {
-            payrollDatabase.deleteEmployee(employeeId)
-        }
     }
 
     @Test
@@ -40,8 +28,8 @@ class ServiceChargeTransactionTests {
     @Test
     void "add service charge transaction on an existing employee with union affiliation should execute without error"() {
         Employee employee = payrollDatabase.getEmployee(employeeId)
-        employee.affiliation = Optional.of(new UnionAffiliation())
         payrollDatabase.addUnionMember(memberId, employee)
+        employee.affiliation = Optional.of(new UnionAffiliation(memberId, 10))
         new ServiceChargeTransaction(employeeId, today, charge).execute()
 
         assert ((UnionAffiliation) employee.affiliation.get()).getServiceCharge(today).amount == charge

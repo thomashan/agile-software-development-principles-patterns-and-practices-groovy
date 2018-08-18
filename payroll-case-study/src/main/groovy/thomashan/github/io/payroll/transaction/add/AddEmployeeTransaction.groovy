@@ -1,16 +1,14 @@
-package thomashan.github.io.payroll.transaction
+package thomashan.github.io.payroll.transaction.add
 
 import groovy.transform.TupleConstructor
 import thomashan.github.io.payroll.Employee
-import thomashan.github.io.payroll.InMemPayrollDatabase
-import thomashan.github.io.payroll.PayrollDatabase
 import thomashan.github.io.payroll.classification.PaymentClassification
 import thomashan.github.io.payroll.method.HoldMethod
 import thomashan.github.io.payroll.schedule.PaymentSchedule
+import thomashan.github.io.payroll.transaction.Transaction
 
 @TupleConstructor
 abstract class AddEmployeeTransaction implements Transaction {
-    private final PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
     final int employeeId
     final String name
     final String address

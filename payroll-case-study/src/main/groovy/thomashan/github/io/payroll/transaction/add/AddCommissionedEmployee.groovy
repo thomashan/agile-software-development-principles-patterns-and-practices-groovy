@@ -1,4 +1,4 @@
-package thomashan.github.io.payroll.transaction
+package thomashan.github.io.payroll.transaction.add
 
 import groovy.transform.Canonical
 import thomashan.github.io.payroll.classification.CommissionedClassification

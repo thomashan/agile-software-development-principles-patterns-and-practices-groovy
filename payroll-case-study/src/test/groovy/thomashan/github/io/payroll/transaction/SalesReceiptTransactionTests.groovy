@@ -1,27 +1,16 @@
 package thomashan.github.io.payroll.transaction
 
-import org.junit.jupiter.api.AfterEach
 import org.junit.jupiter.api.Test
-import thomashan.github.io.payroll.Employee
-import thomashan.github.io.payroll.InMemPayrollDatabase
-import thomashan.github.io.payroll.PayrollDatabase
+import thomashan.github.io.payroll.transaction.add.AddCommissionedEmployee
+import thomashan.github.io.payroll.transaction.add.AddHourlyEmployee
+import thomashan.github.io.payroll.transaction.add.AddSalariedEmployee
 
 import java.time.LocalDate
 
 import static org.junit.jupiter.api.Assertions.assertThrows
 
-class SalesReceiptTransactionTests {
-    private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
-    private int employeeId = 1
+class SalesReceiptTransactionTests implements TransactionTests {
     private LocalDate today = LocalDate.now()
-
-    @AfterEach
-    void tearDown() {
-        Employee employee = payrollDatabase.getEmployee(employeeId)
-        if (employee) {
-            payrollDatabase.deleteEmployee(employeeId)
-        }
-    }
 
     @Test
     void "sales receipt transaction on nonexistent employee should throw an error"() {
