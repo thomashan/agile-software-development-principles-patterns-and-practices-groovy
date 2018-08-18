@@ -5,7 +5,7 @@ import thomashan.github.io.payroll.Employee
 import thomashan.github.io.payroll.classification.SalariedClassification
 import thomashan.github.io.payroll.schedule.MonthlySchedule
 
-class ChangeSalariedTransactionTests implements TransactionTests {
+class ChangeSalariedTransactionTests implements ChangeEmployeeTransactionTests {
     private double newSalary = 2000
 
     @Test

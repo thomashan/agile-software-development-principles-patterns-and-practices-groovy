@@ -5,7 +5,7 @@ import thomashan.github.io.payroll.Employee
 import thomashan.github.io.payroll.classification.CommissionedClassification
 import thomashan.github.io.payroll.schedule.BiweeklySchedule
 
-class ChangeCommissionedTransactionTests implements TransactionTests {
+class ChangeCommissionedTransactionTests implements ChangeEmployeeTransactionTests {
     private double newSalary = 2000
     double newCommissionRate = 10
 

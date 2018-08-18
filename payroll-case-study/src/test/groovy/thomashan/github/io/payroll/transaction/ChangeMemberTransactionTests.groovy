@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
 import thomashan.github.io.payroll.affiliation.UnionAffiliation
 
-class ChangeMemberTransactionTests implements TransactionTests {
+class ChangeMemberTransactionTests implements ChangeEmployeeTransactionTests {
     @Test
     void "change member transaction should execute without error"() {
         int memberId = 1

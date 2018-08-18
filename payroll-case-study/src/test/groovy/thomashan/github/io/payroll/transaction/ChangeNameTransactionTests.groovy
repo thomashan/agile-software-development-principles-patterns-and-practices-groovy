@@ -3,7 +3,7 @@ package thomashan.github.io.payroll.transaction
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
 
-class ChangeNameTransactionTests implements TransactionTests {
+class ChangeNameTransactionTests implements ChangeEmployeeTransactionTests {
     @Test
     void "employee should be able to change their name"() {
         String name = "NewAnonName"

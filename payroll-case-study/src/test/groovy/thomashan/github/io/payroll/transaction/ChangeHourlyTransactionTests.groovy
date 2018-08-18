@@ -5,7 +5,7 @@ import thomashan.github.io.payroll.Employee
 import thomashan.github.io.payroll.classification.HourlyClassification
 import thomashan.github.io.payroll.schedule.WeeklySchedule
 
-class ChangeHourlyTransactionTests implements TransactionTests {
+class ChangeHourlyTransactionTests implements ChangeEmployeeTransactionTests {
     private double newHourlyRate = 100
 
     @Test
