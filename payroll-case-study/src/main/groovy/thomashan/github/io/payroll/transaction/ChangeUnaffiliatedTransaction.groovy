@@ -16,9 +16,11 @@ class ChangeUnaffiliatedTransaction extends ChangeAffiliationTransaction {
 
     @Override
     void recordMembership(Employee employee) {
-        if (employee.affiliation.present && employee.affiliation.get() instanceof UnionAffiliation) {
-            UnionAffiliation unionAffiliation = employee.affiliation.get()
-            payrollDatabase.removeUnionMember(unionAffiliation.memberId)
+        if (!employee.affiliation.present || !(employee.affiliation.get() instanceof UnionAffiliation)) {
+            throw new RuntimeException("Employee employeeId[${employeeId}] not a union member")
         }
+
+        UnionAffiliation unionAffiliation = employee.affiliation.get()
+        payrollDatabase.removeUnionMember(unionAffiliation.memberId)
     }
 }
