@@ -1,5 +1,6 @@
 package thomashan.github.io.payroll.classification
 
+import thomashan.github.io.payroll.PayCheque
 import thomashan.github.io.payroll.SalesReceipt
 
 class CommissionedClassification implements PaymentClassification {
@@ -14,5 +15,10 @@ class CommissionedClassification implements PaymentClassification {
 
     void addSalesReceipt(SalesReceipt salesReciept) {
         salesReceipts.add(salesReciept)
+    }
+
+    @Override
+    double calculatePay(PayCheque payCheque) {
+        return salesReceipts.collect { it.amount * commissionRate / 100 }.sum() + salary
     }
 }
