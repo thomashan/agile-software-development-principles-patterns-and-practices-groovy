@@ -26,7 +26,7 @@ class CommissionedClassificationTests {
     @Test
     void "calculatePay should return correct gross pay"() {
         commissionedClassification.addSalesReceipt(salesReceipt)
-        PayCheque payCheque = new PayCheque(LocalDate.now())
+        PayCheque payCheque = new PayCheque(today.minusWeeks(2), today)
         double grossPay = commissionedClassification.salary + salesReceipt.amount * commissionedClassification.commissionRate / 100
 
         assert commissionedClassification.calculatePay(payCheque) == grossPay

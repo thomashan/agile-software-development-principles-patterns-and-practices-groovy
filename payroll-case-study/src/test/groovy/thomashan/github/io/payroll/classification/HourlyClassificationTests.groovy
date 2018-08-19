@@ -36,7 +36,7 @@ class HourlyClassificationTests {
         hourlyClassification.addTimeCard(new TimeCard(today.minusDays(7), 8))
         hourlyClassification.addTimeCard(new TimeCard(today.minusDays(6), 8))
         hourlyClassification.addTimeCard(new TimeCard(today.plusDays(1), 8))
-        PayCheque payCheque = new PayCheque(today)
+        PayCheque payCheque = new PayCheque(today.minusWeeks(1), today)
         double grossPay = 16 * hourlyClassification.hourlyRate
 
         assert hourlyClassification.calculatePay(payCheque) == grossPay
