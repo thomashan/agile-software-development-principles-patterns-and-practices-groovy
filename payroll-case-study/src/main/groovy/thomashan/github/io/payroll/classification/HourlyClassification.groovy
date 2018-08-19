@@ -29,7 +29,7 @@ class HourlyClassification implements PaymentClassification {
     double calculatePay(PayCheque payCheque) {
         LocalDate aWeekAgo = payCheque.payDate.minusWeeks(1)
 
-        return timeCards.findAll { it.key > aWeekAgo && it.key <= payCheque }
+        return timeCards.findAll { it.key > aWeekAgo && it.key <= payCheque.payDate }
                 .collect { it.value.hours }
                 .sum() * hourlyRate
     }
