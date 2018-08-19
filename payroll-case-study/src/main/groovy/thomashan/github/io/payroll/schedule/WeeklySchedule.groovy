@@ -12,4 +12,9 @@ class WeeklySchedule implements PaymentSchedule {
     boolean isPayDate(LocalDate payDate) {
         return payDate.dayOfWeek == FRIDAY
     }
+
+    @Override
+    LocalDate getPayPeriodStartDate(LocalDate payDate) {
+        return payDate.minusWeeks(1)
+    }
 }

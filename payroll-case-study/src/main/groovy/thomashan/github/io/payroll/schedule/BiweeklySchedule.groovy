@@ -14,4 +14,9 @@ class BiweeklySchedule implements PaymentSchedule {
         int weekOfYear = payDate.get(WeekFields.of(Locale.default).weekOfWeekBasedYear())
         return payDate.dayOfWeek == FRIDAY && weekOfYear % 2 == 0
     }
+
+    @Override
+    LocalDate getPayPeriodStartDate(LocalDate payDate) {
+        return payDate.minusWeeks(2)
+    }
 }

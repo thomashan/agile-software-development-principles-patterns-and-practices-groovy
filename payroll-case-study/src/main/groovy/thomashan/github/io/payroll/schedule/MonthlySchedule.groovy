@@ -14,4 +14,9 @@ class MonthlySchedule implements PaymentSchedule {
 
         return payDate == lastDayOfMonth
     }
+
+    @Override
+    LocalDate getPayPeriodStartDate(LocalDate payDate) {
+        return payDate.minusMonths(1)
+    }
 }

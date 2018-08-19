@@ -6,6 +6,7 @@ import java.time.LocalDate
 
 class MonthlyScheduleTests {
     private MonthlySchedule monthlySchedule = new MonthlySchedule()
+    private LocalDate today = LocalDate.now()
 
     @Test
     void "isPayDate should return true if it is the last day of the month"() {
@@ -15,5 +16,10 @@ class MonthlyScheduleTests {
     @Test
     void "isPayDate should return false if it is not the last day of the month"() {
         assert !monthlySchedule.isPayDate(new LocalDate(2001, 11, 29))
+    }
+
+    @Test
+    void "getPayPeriodStartDate should return month before payDate"() {
+        assert monthlySchedule.getPayPeriodStartDate(today) == today.minusMonths(1)
     }
 }
