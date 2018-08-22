@@ -16,4 +16,14 @@ class DateTimeUtilTests {
     void "numberOfFridaysInPayPeriod should return correct"() {
         assert DateTimeUtil.numberOfFridaysInPayPeriod(today, today.plusWeeks(1)) == 1
     }
+
+    @Test
+    void "daysInMonth should return correct value"() {
+        assert DateTimeUtil.daysInMonth(LocalDate.of(1999, 2, 1)) == 28
+    }
+
+    @Test
+    void "daysInMonth should return correct leap year value"() {
+        assert DateTimeUtil.daysInMonth(LocalDate.of(2000, 2, 1)) == 29
+    }
 }

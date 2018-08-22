@@ -2,6 +2,7 @@ package thomashan.github.io.payroll
 
 import java.time.DayOfWeek
 import java.time.LocalDate
+import java.time.YearMonth
 import java.time.temporal.ChronoUnit
 import java.time.temporal.TemporalAdjusters
 
@@ -23,5 +24,11 @@ final class DateTimeUtil {
         } else {
             return endDate.with(TemporalAdjusters.previous(FRIDAY))
         }
+    }
+
+    static int daysInMonth(LocalDate date) {
+        YearMonth yearMonth = YearMonth.of(date.year, date.month)
+
+        return yearMonth.lengthOfMonth()
     }
 }

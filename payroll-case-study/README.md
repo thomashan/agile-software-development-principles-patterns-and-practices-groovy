@@ -19,7 +19,9 @@ If I deviate away from the source it will be listed in ["Improvements and change
         * key-value
         * document
         * graph
-* use different web frameworks
+* use different ui frameworks
+    * console
+    * javafx
     * zk
     * polymer
     * react
