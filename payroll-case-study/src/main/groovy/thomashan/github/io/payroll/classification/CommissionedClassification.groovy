@@ -13,8 +13,8 @@ class CommissionedClassification implements PaymentClassification {
         this.commissionRate = commissionRate
     }
 
-    void addSalesReceipt(SalesReceipt salesReciept) {
-        salesReceipts.add(salesReciept)
+    void addSalesReceipt(SalesReceipt salesReceipt) {
+        salesReceipts.add(salesReceipt)
     }
 
     @Override
