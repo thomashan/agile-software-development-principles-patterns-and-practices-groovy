@@ -27,8 +27,17 @@ class HourlyClassification implements PaymentClassification {
 
     @Override
     double calculatePay(PayCheque payCheque) {
-        return timeCards.findAll { it.key > payCheque.payPeriodStartDate && it.key <= payCheque.payPeriodEndDate }
-                .collect { it.value.hours }
-                .sum() * hourlyRate
+        timeCards.findAll {
+            it.key > payCheque.payPeriodStartDate && it.key <= payCheque.payPeriodEndDate
+        }
+        .collect { calculatePayForTimeCard(it.value) }
+                .sum() ?: 0
+    }
+
+    private double calculatePayForTimeCard(TimeCard timeCard) {
+        double overtimeHours = Math.max(0, timeCard.hours - 8)
+        double normalHours = timeCard.hours - overtimeHours
+
+        return hourlyRate * normalHours + 1.5 * hourlyRate * overtimeHours
     }
 }
