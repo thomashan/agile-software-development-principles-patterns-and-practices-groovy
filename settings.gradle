@@ -1,3 +1,5 @@
 rootProject.name = "agile-software-development-principles-patterns-and-practices-groovy"
 
 include "payroll-case-study"
+include "payroll-case-study:core"
+include "payroll-case-study:app"
