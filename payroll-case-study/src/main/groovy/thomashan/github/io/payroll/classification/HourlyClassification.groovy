@@ -1,11 +1,14 @@
 package thomashan.github.io.payroll.classification
 
 import groovy.transform.Immutable
+import groovy.transform.TupleConstructor
+import thomashan.github.io.payroll.PayCheque
 import thomashan.github.io.payroll.TimeCard
 
 import java.time.LocalDate
 
 @Immutable
+@TupleConstructor
 class HourlyClassification implements PaymentClassification {
     private Map<LocalDate, TimeCard> timeCards = [:]
     double hourlyRate
@@ -20,5 +23,21 @@ class HourlyClassification implements PaymentClassification {
         }
 
         return timeCards.get(date)
+    }
+
+    @Override
+    double calculatePay(PayCheque payCheque) {
+        timeCards.findAll {
+            it.key > payCheque.payPeriodStartDate && it.key <= payCheque.payPeriodEndDate
+        }
+        .collect { calculatePayForTimeCard(it.value) }
+                .sum() ?: 0
+    }
+
+    private double calculatePayForTimeCard(TimeCard timeCard) {
+        double overtimeHours = Math.max(0, timeCard.hours - 8)
+        double normalHours = timeCard.hours - overtimeHours
+
+        return hourlyRate * normalHours + 1.5 * hourlyRate * overtimeHours
     }
 }

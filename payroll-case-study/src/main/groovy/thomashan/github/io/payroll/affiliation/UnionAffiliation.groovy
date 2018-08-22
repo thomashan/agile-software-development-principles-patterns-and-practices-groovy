@@ -1,5 +1,8 @@
 package thomashan.github.io.payroll.affiliation
 
+import thomashan.github.io.payroll.DateTimeUtil
+import thomashan.github.io.payroll.PayCheque
+
 import java.time.LocalDate
 
 class UnionAffiliation implements Affiliation {
@@ -18,5 +21,11 @@ class UnionAffiliation implements Affiliation {
 
     ServiceCharge getServiceCharge(LocalDate date) {
         return serviceCharges.get(date)
+    }
+
+    @Override
+    double calculateDeductions(PayCheque payCheque) {
+        long numberOfFridays = DateTimeUtil.numberOfFridaysInPayPeriod(payCheque.payPeriodStartDate, payCheque.payPeriodEndDate)
+        return numberOfFridays * dues
     }
 }

@@ -3,6 +3,7 @@ package thomashan.github.io.payroll.transaction.update
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
+import thomashan.github.io.payroll.PayCheque
 import thomashan.github.io.payroll.affiliation.Affiliation
 import thomashan.github.io.payroll.transaction.add.AddHourlyEmployee
 
@@ -43,6 +44,9 @@ class ChangeUnaffiliatedTransactionTests implements ChangeEmployeeTransactionTes
     }
 
     private static class NoAffiliation implements Affiliation {
-
+        @Override
+        double calculateDeductions(PayCheque payCheque) {
+            return 0
+        }
     }
 }

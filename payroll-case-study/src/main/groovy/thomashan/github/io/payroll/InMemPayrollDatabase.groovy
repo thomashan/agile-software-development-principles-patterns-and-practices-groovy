@@ -38,4 +38,9 @@ class InMemPayrollDatabase implements PayrollDatabase {
     void removeUnionMember(int memberId) {
         unionMembers.remove(memberId)
     }
+
+    @Override
+    List<Integer> getAllEmployeeIds() {
+        return employees.keySet().toList()
+    }
 }

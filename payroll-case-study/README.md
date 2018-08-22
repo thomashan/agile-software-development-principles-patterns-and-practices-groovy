@@ -6,6 +6,32 @@ If I deviate away from the source it will be listed in ["Improvements and change
 ## Improvements and changes
 * Use of optional in favour of null object pattern
 * I've tried to dissect the tests as finely as possible to be clear about the intent and unit under tests
+* Pushed many tests from Payroll to lower level tests (e.g. PaymentClassification)
+* Get rid of Paycheck.getField method
+
+## Suggestions
+* use different data store
+    * object database
+    * relational database
+    * flat file
+    * nosql database
+        * column
+        * key-value
+        * document
+        * graph
+* use different ui frameworks
+    * console
+    * javafx
+    * zk
+    * polymer
+    * react
+    * vue
+    * echo
+    * grails
+    * micronaut
+    * spring boot
+    * JHipster
+    * spark
 
 ## Other implementations
 There are a lot of implementation on github.
