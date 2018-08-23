@@ -1,35 +1,36 @@
 package thomashan.github.io.payroll
 
 import groovy.transform.builder.Builder
-import io.reactivex.functions.Consumer
+import thomashan.github.io.payroll.transaction.add.AddCommissionedEmployee
 
 @Builder()
 class PayrollApplication {
     DataSource dataSource
     Ui ui
-    TransactionSource transactionSource
+    CommandBus commandBus
 
     static void main(String[] args) {
-        Consumer<String> consumer = new Consumer<String>() {
-            @Override
-            void accept(String string) throws Exception {
-                println(string)
-            }
-        }
-        TransactionSource transactionSource = new TextParserTransactionSource<String>(consumer)
-
         PayrollApplication payrollApplication = PayrollApplication
                 .builder()
                 .dataSource(DataSource.flatFile)
                 .ui(Ui.console)
-                .transactionSource(transactionSource)
+                .commandBus(new CommandBusRxJava2())
                 .build()
 
+        Thread.start {
+            sleep(1000)
+            println("adding transactions")
+            payrollApplication.commandBus.push(new AddCommissionedEmployee(1, "Commissioned", "Address1", 1000, 20))
+            println("added transactions")
+            payrollApplication.commandBus.end()
+        }
+
+        println("getting transactions")
         payrollApplication
                 .run()
     }
 
     void run() {
-        transactionSource.getTransactions()
+        commandBus.pull()
     }
 }
