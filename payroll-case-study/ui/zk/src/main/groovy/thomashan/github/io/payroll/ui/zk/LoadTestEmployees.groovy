@@ -22,7 +22,7 @@ class LoadTestEmployees {
         new ChangeDirectTransaction(2, "Bank2", "Account2").execute()
         new ChangeMemberTransaction(2, 1, 10).execute()
 
-        new AddCommissionedEmployee(3, "Employee3", "Address2", 1200, 15).execute()
+        new AddCommissionedEmployee(3, "Employee3", "Address3", 1200, 15).execute()
         new SaleReceiptTransaction(3, today, 200).execute()
         new SaleReceiptTransaction(3, today.minusDays(3), 150).execute()
         new SaleReceiptTransaction(3, today.minusDays(14), 1000).execute()
