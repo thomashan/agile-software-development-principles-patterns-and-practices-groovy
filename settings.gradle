@@ -3,3 +3,4 @@ rootProject.name = "agile-software-development-principles-patterns-and-practices
 include "payroll-case-study"
 include "payroll-case-study:core"
 include "payroll-case-study:app"
+include "payroll-case-study:ui:zk"
