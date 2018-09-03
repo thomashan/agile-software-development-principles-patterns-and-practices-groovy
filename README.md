@@ -8,7 +8,7 @@ Exercises and Solutions from Agile Software Development Principles, Patterns, an
 The original repository is located in [here](https://github.com/unclebob/PPP)
 
 The is an uplift to the original solutions using
-* JDK8
+* JDK9+ (uses [Flow](https://docs.oracle.com/javase/9/docs/api/java/util/concurrent/Flow.html) for the command bus)
 * groovy
 * gradle
 * junit5

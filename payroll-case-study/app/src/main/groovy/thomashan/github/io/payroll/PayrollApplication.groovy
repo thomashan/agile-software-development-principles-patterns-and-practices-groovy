@@ -1,6 +1,8 @@
 package thomashan.github.io.payroll
 
 import groovy.transform.builder.Builder
+import thomashan.github.io.payroll.command.CommandBus
+import thomashan.github.io.payroll.command.CommandBusFlowImpl
 import thomashan.github.io.payroll.transaction.add.AddCommissionedEmployee
 
 @Builder()
@@ -14,7 +16,7 @@ class PayrollApplication {
                 .builder()
                 .dataSource(DataSource.flatFile)
                 .ui(Ui.console)
-                .commandBus(new CommandBusRxJava2())
+                .commandBus(new CommandBusFlowImpl())
                 .build()
 
         Thread.start {
@@ -31,6 +33,6 @@ class PayrollApplication {
     }
 
     void run() {
-        commandBus.pull()
+        commandBus.start()
     }
 }

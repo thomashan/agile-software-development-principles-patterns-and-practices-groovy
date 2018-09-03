@@ -2,9 +2,4 @@ version project.VERSION
 
 dependencies {
     compile project(":payroll-case-study:core")
-
-    // reactive stream api
-    compile "org.reactivestreams:reactive-streams:1.0.2"
-    // reactive stream api rxjava2 implementation
-    compile "io.reactivex.rxjava2:rxjava:2.2.0"
 }

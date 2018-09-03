@@ -1,55 +1,65 @@
 <zk>
     <window title="Employee List" border="normal" apply="org.zkoss.bind.BindComposer"
             viewModel="@id('vm') @init('thomashan.github.io.payroll.ui.zk.ListEmployeeViewModel')">
-        <listbox model="@bind(vm.employees)" selectedItem="@bind(vm.selectedEmployee)" checkmark="true" mold="paging"
-                 pageSize="9">
-            <listhead>
-                <listheader width="32px"/>
-                <listheader label="Employee ID" align="center" sort="auto(employeeId)"/>
-                <listheader label="Name" align="center" sort="auto(name)"/>
-                <listheader label="Address" align="center" sort="auto(address)"/>
-                <!--<listheader label="Payment Classification" align="center" sort="auto(paymentClassification)"/>-->
-                <!--<listheader label="Payment Schedule" align="center" sort="auto(paymentSchedule)"/>-->
-                <!--<listheader label="Payment Method" align="center" sort="auto(paymentMethod)"/>-->
-                <!--<listheader label="Affiliation" align="center" sort="auto(affiliation)"/>-->
-            </listhead>
-            <template name="model">
-                <listitem>
-                    <listcell/>
-                    <listcell label="@bind(each.employeeId)"/>
-                    <listcell label="@bind(each.name)"/>
-                    <listcell label="@bind(each.address)"/>
-                    <!--<listcell label="@bind(each.paymentClassification)"/>-->
-                    <!--<listcell label="@bind(each.paymentSchedule)"/>-->
-                    <!--<listcell label="@bind(each.paymentMethod)"/>-->
-                    <!--<listcell label="@bind(each.affiliation)"/>-->
-                </listitem>
-            </template>
-        </listbox>
-        <hbox style="margin-top:20px" visible="@bind(not empty vm.selectedEmployee)">
-            <vbox>
-                <hlayout>Employee ID:
-                    <label value="@bind(vm.selectedEmployee.employeeId)" style="font-weight:bold"/>
-                </hlayout>
-                <hlayout>Name:
-                    <label value="@bind(vm.selectedEmployee.name)" style="font-weight:bold"/>
-                </hlayout>
-                <hlayout>Address:
-                    <label value="@bind(vm.selectedEmployee.address)" style="font-weight:bold"/>
-                </hlayout>
-                <hlayout>Payment Classification:
-                    <label value="@bind(vm.selectedEmployee.paymentClassification)"/>
-                </hlayout>
-                <hlayout>Payment Schedule:
-                    <label value="@bind(vm.selectedEmployee.paymentSchedule)"/>
-                </hlayout>
-                <hlayout>Payment Method:
-                    <label value="@bind(vm.selectedEmployee.paymentMethod)"/>
-                </hlayout>
-                <hlayout>Affiliation:
-                    <label value="@bind(vm.selectedEmployee.affiliation)"/>
-                </hlayout>
-            </vbox>
-        </hbox>
+        <grid hflex="2">
+            <rows>
+                <row>
+                    Current Date:<datebox cols="12" format="yyyy/MM/dd" value="@bind(vm.date)"/>
+                </row>
+                <row>
+                    <listbox model="@bind(vm.employees)" selectedItem="@bind(vm.selectedEmployee)" checkmark="true"
+                             mold="paging"
+                             pageSize="9">
+                        <listhead>
+                            <listheader width="32px"/>
+                            <listheader label="Employee ID" align="center" sort="auto(employeeId)"/>
+                            <listheader label="Name" align="center" sort="auto(name)"/>
+                            <listheader label="Address" align="center" sort="auto(address)"/>
+                            <!--<listheader label="Payment Classification" align="center" sort="auto(paymentClassification)"/>-->
+                            <!--<listheader label="Payment Schedule" align="center" sort="auto(paymentSchedule)"/>-->
+                            <!--<listheader label="Payment Method" align="center" sort="auto(paymentMethod)"/>-->
+                            <!--<listheader label="Affiliation" align="center" sort="auto(affiliation)"/>-->
+                        </listhead>
+                        <template name="model">
+                            <listitem>
+                                <listcell/>
+                                <listcell label="@bind(each.employeeId)"/>
+                                <listcell label="@bind(each.name)"/>
+                                <listcell label="@bind(each.address)"/>
+                                <!--<listcell label="@bind(each.paymentClassification)"/>-->
+                                <!--<listcell label="@bind(each.paymentSchedule)"/>-->
+                                <!--<listcell label="@bind(each.paymentMethod)"/>-->
+                                <!--<listcell label="@bind(each.affiliation)"/>-->
+                            </listitem>
+                        </template>
+                    </listbox>
+                    <hbox style="margin-top:20px" visible="@bind(not empty vm.selectedEmployee)">
+                        <vbox>
+                            <hlayout>Employee ID:
+                                <label value="@bind(vm.selectedEmployee.employeeId)" style="font-weight:bold"/>
+                            </hlayout>
+                            <hlayout>Name:
+                                <label value="@bind(vm.selectedEmployee.name)" style="font-weight:bold"/>
+                            </hlayout>
+                            <hlayout>Address:
+                                <label value="@bind(vm.selectedEmployee.address)" style="font-weight:bold"/>
+                            </hlayout>
+                            <hlayout>Payment Classification:
+                                <label value="@bind(vm.selectedEmployee.paymentClassification)"/>
+                            </hlayout>
+                            <hlayout>Payment Schedule:
+                                <label value="@bind(vm.selectedEmployee.paymentSchedule)"/>
+                            </hlayout>
+                            <hlayout>Payment Method:
+                                <label value="@bind(vm.selectedEmployee.paymentMethod)"/>
+                            </hlayout>
+                            <hlayout>Affiliation:
+                                <label value="@bind(vm.selectedEmployee.affiliation)"/>
+                            </hlayout>
+                        </vbox>
+                    </hbox>
+                </row>
+            </rows>
+        </grid>
     </window>
 </zk>

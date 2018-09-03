@@ -1,1 +1,8 @@
 version project.VERSION
+
+dependencies {
+    compile "com.github.akarnokd:reactive4javaflow:0.1.5"
+    compile "io.reactivex.rxjava2:rxjava:2.2.1"
+
+    testCompile "org.awaitility:awaitility-groovy:3.1.2"
+}

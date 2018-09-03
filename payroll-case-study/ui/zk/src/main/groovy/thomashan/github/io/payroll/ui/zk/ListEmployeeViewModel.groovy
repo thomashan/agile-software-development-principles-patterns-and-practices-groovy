@@ -8,6 +8,7 @@ class ListEmployeeViewModel {
     private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
     List<Employee> employees = LoadTestEmployees.load()
     Employee selectedEmployee
+    Date date = new Date()
 
     ListEmployeeViewModel() {
         LoadTestEmployees.load()
