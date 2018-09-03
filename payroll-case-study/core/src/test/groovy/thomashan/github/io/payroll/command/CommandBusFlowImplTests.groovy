@@ -23,5 +23,9 @@ class CommandBusFlowImplTests {
         commandBus.end()
 
         Awaitility.await().until { commandBus.complete }
+
+        commandBus.publisher
+                .test()
+                .assertComplete()
     }
 }

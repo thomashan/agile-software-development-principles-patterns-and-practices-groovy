@@ -1,10 +1,11 @@
 package thomashan.github.io.payroll.command
 
+import hu.akarnokd.reactive4javaflow.Folyam
 import hu.akarnokd.reactive4javaflow.processors.CachingProcessor
 import thomashan.github.io.payroll.transaction.Transaction
 
 @Singleton
-class CommandBusFlowImpl implements CommandBus {
+class CommandBusFlowImpl implements CommandBus<Folyam<Transaction>> {
     private final CachingProcessor<Transaction> transactions = new CachingProcessor()
 
 
@@ -32,5 +33,10 @@ class CommandBusFlowImpl implements CommandBus {
     @Override
     boolean isComplete() {
         return transactions.hasComplete()
+    }
+
+    @Override
+    Folyam<Transaction> getPublisher() {
+        return transactions
     }
 }

@@ -2,7 +2,9 @@ package thomashan.github.io.payroll.command
 
 import thomashan.github.io.payroll.transaction.Transaction
 
-trait CommandBus {
+import java.util.concurrent.Flow.Publisher
+
+trait CommandBus<T extends Publisher<Transaction>> {
     abstract void push(Transaction transaction)
 
     /**
@@ -13,4 +15,6 @@ trait CommandBus {
     abstract void end()
 
     abstract boolean isComplete()
+
+    abstract T getPublisher()
 }
