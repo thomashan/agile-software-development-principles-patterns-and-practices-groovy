@@ -34,7 +34,7 @@ allprojects {
     group "thomashan.github.io"
 
     dependencies {
-        compile("org.codehaus.groovy:groovy-all:2.5.1") {
+        compile("org.codehaus.groovy:groovy-all:2.5.4") {
             exclude(group: "junit")
         }
 
