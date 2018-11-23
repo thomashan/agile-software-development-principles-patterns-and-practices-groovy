@@ -7,7 +7,7 @@ import thomashan.github.io.payroll.PayrollDatabase
 
 trait TransactionTests {
     final PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
-    final employeeId = 1
+    final int employeeId = 1
 
     @AfterEach
     void tearDown() {

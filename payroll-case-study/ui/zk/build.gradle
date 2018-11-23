@@ -8,11 +8,12 @@ version project.VERSION
 repositories {
     maven { url "http://mavensync.zkoss.org/maven2" }
     maven { url "http://mavensync.zkoss.org/eval" }
-    maven { url "https://plugins.gradle.org/m2/" }
+    maven { url "https://plugins.gradle.org/m2" }
+    maven { url "http://jaspersoft.jfrog.io/jaspersoft/third-party-ce-artifacts" }
     mavenCentral()
 }
 
-def zkVersion = "8.5.1.2-Eval"
+def zkVersion = "8.6.0-Eval"
 
 dependencies {
     compile project(":payroll-case-study:core")

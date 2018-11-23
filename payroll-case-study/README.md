@@ -32,7 +32,26 @@ If I deviate away from the source it will be listed in ["Improvements and change
     * micronaut
     * spring boot
     * JHipster
-    * spark
+    * spark (not apache spark)
+* use different languages
+    * nodejs
+    * javascript (latest version only)
+    * typescript
+    * nativescript
+    * java
+    * scala
+    * swift
+    * c#
+    * f#
+    * elixir
+    * go
+    * python
+    * ruby
+    * php
+    * prolog
+    * rust
+    * c
+    * c++
 
 ## Other implementations
 There are a lot of implementation on github.

@@ -1,7 +1,7 @@
 # ZK UI
 
 ## Run
-Run the embedded webserver.
+Run the embedded web server.
 ```bash
 > ./gradlew appRun
 ```

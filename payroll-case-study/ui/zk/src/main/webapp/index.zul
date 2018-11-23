@@ -1,0 +1,31 @@
+<zk>
+    <window title="Employee List" border="normal" apply="org.zkoss.bind.BindComposer"
+            viewModel="@id('vm') @init('thomashan.github.io.payroll.ui.zk.list.ListEmployeeViewModel')">
+        Current Date: <datebox cols="12" format="yyyy/MM/dd" value="@bind(vm.date)"/>
+        <grid>
+            <rows>
+                <row>
+                    <listbox model="@bind(vm.employees)" selectedItem="@bind(vm.selectedEmployee)"
+                             checkmark="false"
+                             mold="paging"
+                             pageSize="9">
+                        <listhead>
+                            <listheader label="Employee ID" align="center" sort="auto(employeeId)"/>
+                            <listheader label="Name" align="center" sort="auto(name)"/>
+                            <listheader label="Address" align="center" sort="auto(address)"/>
+                            <listheader label="Waging" align="center" sort="auto(address)"/>
+                        </listhead>
+                        <template name="model">
+                            <listitem>
+                                <listcell label="@bind(each.employeeId)"/>
+                                <listcell label="@bind(each.name)"/>
+                                <listcell label="@bind(each.address)"/>
+                                <listcell label="@bind(each.waging)"/>
+                            </listitem>
+                        </template>
+                    </listbox>
+                </row>
+            </rows>
+        </grid>
+    </window>
+</zk>
