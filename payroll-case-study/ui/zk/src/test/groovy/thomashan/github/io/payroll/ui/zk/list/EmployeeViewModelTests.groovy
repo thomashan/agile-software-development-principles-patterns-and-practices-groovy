@@ -2,12 +2,12 @@ package thomashan.github.io.payroll.ui.zk.list
 
 import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.Employee
-import thomashan.github.io.payroll.transaction.TransactionTests
 import thomashan.github.io.payroll.transaction.add.AddCommissionedEmployee
 import thomashan.github.io.payroll.transaction.add.AddHourlyEmployee
 import thomashan.github.io.payroll.transaction.add.AddSalariedEmployee
+import thomashan.github.io.payroll.ui.EmployeeManagement
 
-class EmployeeViewModelTests implements TransactionTests {
+class EmployeeViewModelTests implements EmployeeManagement {
     @Test
     void "hourly employee wage should show correctly"() {
         new AddHourlyEmployee(employeeId, "AnonName", "AnonAddress", 1).execute()
