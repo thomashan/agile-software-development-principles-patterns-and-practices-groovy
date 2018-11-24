@@ -6,7 +6,7 @@ import thomashan.github.io.payroll.PayrollDatabase
 import thomashan.github.io.payroll.ui.zk.LoadTestEmployees
 
 class ListEmployeeViewModel {
-    private PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
+    PayrollDatabase payrollDatabase = InMemPayrollDatabase.instance
     List<EmployeeViewModel> employees = []
     EmployeeViewModel selectedEmployee
     Date date = new Date()
