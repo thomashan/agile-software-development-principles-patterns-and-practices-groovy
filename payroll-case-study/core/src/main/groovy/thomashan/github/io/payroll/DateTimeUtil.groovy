@@ -21,9 +21,9 @@ final class DateTimeUtil {
     private static getLastFriday(LocalDate endDate) {
         if (DayOfWeek.from(endDate) == FRIDAY) {
             return endDate
-        } else {
-            return endDate.with(TemporalAdjusters.previous(FRIDAY))
         }
+
+        return endDate.with(TemporalAdjusters.previous(FRIDAY))
     }
 
     static int daysInMonth(LocalDate date) {
