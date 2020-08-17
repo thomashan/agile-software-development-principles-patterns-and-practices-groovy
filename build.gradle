@@ -29,7 +29,8 @@ allprojects {
         mavenCentral()
     }
 
-    sourceCompatibility = 1.8
+    sourceCompatibility = 1.9
+    targetCompatibility = 1.9
     group "thomashan.github.io"
 
     dependencies {
@@ -54,5 +55,10 @@ allprojects {
             xml.enabled = true // coveralls plugin depends on xml format report
             html.enabled = true
         }
+    }
+
+    jacoco {
+        toolVersion = "0.8.2"
+        reportsDir = file("$buildDir/customJacocoReportDir")
     }
 }

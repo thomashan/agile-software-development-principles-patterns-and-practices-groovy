@@ -8,6 +8,7 @@ If I deviate away from the source it will be listed in ["Improvements and change
 * I've tried to dissect the tests as finely as possible to be clear about the intent and unit under tests
 * Pushed many tests from Payroll to lower level tests (e.g. PaymentClassification)
 * Get rid of Paycheck.getField method
+* Instead of PayrollApplication looping through the TransactionSource use reactive programming.
 
 ## Suggestions
 * use different data store
@@ -31,7 +32,26 @@ If I deviate away from the source it will be listed in ["Improvements and change
     * micronaut
     * spring boot
     * JHipster
-    * spark
+    * spark (not apache spark)
+* use different languages
+    * nodejs
+    * javascript (latest version only)
+    * typescript
+    * nativescript
+    * java
+    * scala
+    * swift
+    * c#
+    * f#
+    * elixir
+    * go
+    * python
+    * ruby
+    * php
+    * prolog
+    * rust
+    * c
+    * c++
 
 ## Other implementations
 There are a lot of implementation on github.

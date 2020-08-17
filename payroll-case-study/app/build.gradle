@@ -1,0 +1,5 @@
+version project.VERSION
+
+dependencies {
+    compile project(":payroll-case-study:core")
+}

@@ -1,0 +1,4 @@
+build:
+  environment:
+    sdkman:
+    - java@9.0.0-zulu
