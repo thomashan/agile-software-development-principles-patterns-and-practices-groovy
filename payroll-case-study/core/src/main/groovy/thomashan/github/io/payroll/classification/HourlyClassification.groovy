@@ -10,7 +10,7 @@ import java.time.LocalDate
 @Immutable
 @TupleConstructor
 class HourlyClassification implements PaymentClassification {
-    private Map<LocalDate, TimeCard> timeCards = [:]
+    private final Map<LocalDate, TimeCard> timeCards = [:]
     double hourlyRate
 
     void addTimeCard(TimeCard timeCard) {
@@ -30,7 +30,7 @@ class HourlyClassification implements PaymentClassification {
         timeCards.findAll {
             it.key > payCheque.payPeriodStartDate && it.key <= payCheque.payPeriodEndDate
         }
-        .collect { calculatePayForTimeCard(it.value) }
+                .collect { calculatePayForTimeCard(it.value) }
                 .sum() ?: 0
     }
 

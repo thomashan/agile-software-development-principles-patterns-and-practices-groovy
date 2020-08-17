@@ -28,12 +28,12 @@ allprojects {
     group "thomashan.github.io"
 
     dependencies {
-        compile("org.codehaus.groovy:groovy-all:2.5.4") {
+        compile("org.codehaus.groovy:groovy-all:3.0.5") {
             exclude(group: "junit")
         }
 
-        testCompile "org.junit.jupiter:junit-jupiter-api:5.3.1"
-        testRuntime "org.junit.jupiter:junit-jupiter-engine:5.3.1"
+        testCompile "org.junit.jupiter:junit-jupiter-api:5.6.2"
+        testRuntime "org.junit.jupiter:junit-jupiter-engine:5.6.2"
     }
 
     compileGroovy {
