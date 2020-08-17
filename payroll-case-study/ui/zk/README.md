@@ -3,7 +3,7 @@
 ## Run
 Run the embedded web server.
 ```bash
-> ./gradlew appRun
+./gradlew appRun
 ```
 
 ## TODO
