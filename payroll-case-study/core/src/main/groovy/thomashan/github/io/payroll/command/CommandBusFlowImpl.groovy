@@ -2,16 +2,18 @@ package thomashan.github.io.payroll.command
 
 import hu.akarnokd.reactive4javaflow.Folyam
 import hu.akarnokd.reactive4javaflow.processors.CachingProcessor
+import org.slf4j.Logger
+import org.slf4j.LoggerFactory
 import thomashan.github.io.payroll.transaction.Transaction
 
 @Singleton
 class CommandBusFlowImpl implements CommandBus<Folyam<Transaction>> {
+    private static final Logger logger = LoggerFactory.getLogger(CommandBusFlowImpl.class)
     private final CachingProcessor<Transaction> transactions = new CachingProcessor()
-
 
     @Override
     void push(Transaction transaction) {
-        println("received: ${transaction}")
+        logger.info("received: ${transaction}")
         transactions.onNext(transaction)
     }
 
@@ -20,13 +22,13 @@ class CommandBusFlowImpl implements CommandBus<Folyam<Transaction>> {
      */
     @Override
     void start() {
-        println("starting")
+        logger.info("starting")
         transactions.subscribe({ it.execute() })
     }
 
     @Override
     void end() {
-        println("end")
+        logger.info("end")
         transactions.onComplete()
     }
 

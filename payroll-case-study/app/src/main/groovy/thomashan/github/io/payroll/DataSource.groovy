@@ -1,5 +1,5 @@
 package thomashan.github.io.payroll
 
 enum DataSource {
-    inMemory, flatFile
+    IN_MEMORY, FLAT_FILE
 }
