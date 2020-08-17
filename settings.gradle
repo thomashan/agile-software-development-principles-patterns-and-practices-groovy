@@ -1,4 +1,15 @@
+plugins {
+    id "com.gradle.enterprise" version "3.4"
+}
+
 rootProject.name = "agile-software-development-principles-patterns-and-practices-groovy"
+
+gradleEnterprise {
+    buildScan {
+        termsOfServiceUrl = "https://gradle.com/terms-of-service"
+        termsOfServiceAgree = "yes"
+    }
+}
 
 include "payroll-case-study"
 include "payroll-case-study:core"
