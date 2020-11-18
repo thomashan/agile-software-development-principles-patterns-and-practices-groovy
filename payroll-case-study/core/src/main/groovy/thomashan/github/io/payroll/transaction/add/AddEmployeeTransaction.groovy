@@ -17,7 +17,7 @@ trait AddEmployeeTransaction implements Transaction {
 
     @Override
     void execute() {
-        Employee employee = new Employee(employeeId, name, address, paymentClassification, paymentSchedule, new HoldMethod())
+        Employee employee = new Employee(employeeId, name, address, paymentClassification, paymentSchedule, HoldMethod.instance)
         payrollDatabase.addEmployee(employee)
     }
 }

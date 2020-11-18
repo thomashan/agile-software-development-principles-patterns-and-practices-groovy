@@ -10,6 +10,6 @@ class ChangeHoldTransaction extends ChangeMethodTransaction {
 
     @Override
     PaymentMethod getPaymentMethod() {
-        return new HoldMethod()
+        return HoldMethod.instance
     }
 }
