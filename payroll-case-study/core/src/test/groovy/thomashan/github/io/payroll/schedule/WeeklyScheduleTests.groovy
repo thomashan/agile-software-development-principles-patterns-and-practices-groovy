@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
 class WeeklyScheduleTests {
-    private WeeklySchedule weeklySchedule = new WeeklySchedule()
+    private WeeklySchedule weeklySchedule = WeeklySchedule.instance
     private LocalDate today = LocalDate.now()
 
     @Test

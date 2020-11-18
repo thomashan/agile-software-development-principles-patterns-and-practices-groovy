@@ -22,6 +22,6 @@ class ChangeCommissionedTransaction extends ChangeClassificationTransaction {
 
     @Override
     PaymentSchedule getPaymentSchedule() {
-        return new BiweeklySchedule()
+        return BiweeklySchedule.instance
     }
 }

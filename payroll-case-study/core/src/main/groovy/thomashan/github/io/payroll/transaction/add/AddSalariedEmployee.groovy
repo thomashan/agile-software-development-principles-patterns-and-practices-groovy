@@ -13,7 +13,7 @@ class AddSalariedEmployee implements AddEmployeeTransaction {
         this.thomashan_github_io_payroll_transaction_add_AddEmployeeTransaction__name = name
         this.thomashan_github_io_payroll_transaction_add_AddEmployeeTransaction__address = address
         this.thomashan_github_io_payroll_transaction_add_AddEmployeeTransaction__paymentClassification = new SalariedClassification(monthlySalary)
-        this.thomashan_github_io_payroll_transaction_add_AddEmployeeTransaction__paymentSchedule = new MonthlySchedule()
+        this.thomashan_github_io_payroll_transaction_add_AddEmployeeTransaction__paymentSchedule = MonthlySchedule.instance
         this.monthlySalary = monthlySalary
     }
 }

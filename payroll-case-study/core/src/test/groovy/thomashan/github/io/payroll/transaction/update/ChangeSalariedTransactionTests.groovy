@@ -19,7 +19,7 @@ class ChangeSalariedTransactionTests implements ChangeEmployeeTransactionTests {
         SalariedClassification salariedClassification = employee.paymentClassification
 
         assert salariedClassification.salary == newSalary
-        assert employee.paymentSchedule == new MonthlySchedule()
+        assert employee.paymentSchedule == MonthlySchedule.instance
     }
 
     @Test
@@ -31,6 +31,6 @@ class ChangeSalariedTransactionTests implements ChangeEmployeeTransactionTests {
         SalariedClassification salariedClassification = employee.paymentClassification
 
         assert salariedClassification.salary == newSalary
-        assert employee.paymentSchedule == new MonthlySchedule()
+        assert employee.paymentSchedule == MonthlySchedule.instance
     }
 }

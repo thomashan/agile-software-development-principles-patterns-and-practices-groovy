@@ -21,7 +21,7 @@ class ChangeCommissionedTransactionTests implements ChangeEmployeeTransactionTes
 
         assert commissionedClassification.salary == newSalary
         assert commissionedClassification.commissionRate == newCommissionRate
-        assert employee.paymentSchedule == new BiweeklySchedule()
+        assert employee.paymentSchedule == BiweeklySchedule.instance
     }
 
     @Test
@@ -34,6 +34,6 @@ class ChangeCommissionedTransactionTests implements ChangeEmployeeTransactionTes
 
         assert commissionedClassification.salary == newSalary
         assert commissionedClassification.commissionRate == newCommissionRate
-        assert employee.paymentSchedule == new BiweeklySchedule()
+        assert employee.paymentSchedule == BiweeklySchedule.instance
     }
 }

@@ -20,6 +20,6 @@ class ChangeSalariedTransaction extends ChangeClassificationTransaction {
 
     @Override
     PaymentSchedule getPaymentSchedule() {
-        return new MonthlySchedule()
+        return MonthlySchedule.instance
     }
 }

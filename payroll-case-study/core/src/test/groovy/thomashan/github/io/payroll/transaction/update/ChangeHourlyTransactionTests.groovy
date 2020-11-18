@@ -18,7 +18,7 @@ class ChangeHourlyTransactionTests implements ChangeEmployeeTransactionTests {
         Employee employee = payrollDatabase.getEmployee(employeeId)
 
         assert ((HourlyClassification) employee.paymentClassification).hourlyRate == newHourlyRate
-        assert employee.paymentSchedule == new WeeklySchedule()
+        assert employee.paymentSchedule == WeeklySchedule.instance
     }
 
     @Test
@@ -29,6 +29,6 @@ class ChangeHourlyTransactionTests implements ChangeEmployeeTransactionTests {
         Employee employee = payrollDatabase.getEmployee(employeeId)
 
         assert ((HourlyClassification) employee.paymentClassification).hourlyRate == newHourlyRate
-        assert employee.paymentSchedule == new WeeklySchedule()
+        assert employee.paymentSchedule == WeeklySchedule.instance
     }
 }

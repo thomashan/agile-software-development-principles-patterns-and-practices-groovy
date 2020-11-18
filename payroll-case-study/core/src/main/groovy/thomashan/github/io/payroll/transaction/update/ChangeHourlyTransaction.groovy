@@ -20,6 +20,6 @@ class ChangeHourlyTransaction extends ChangeClassificationTransaction {
 
     @Override
     PaymentSchedule getPaymentSchedule() {
-        return new WeeklySchedule()
+        return WeeklySchedule.instance
     }
 }

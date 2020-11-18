@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test
 import java.time.LocalDate
 
 class BiweeklyScheduleTests {
-    private BiweeklySchedule biweeklySchedule = new BiweeklySchedule()
+    private BiweeklySchedule biweeklySchedule = BiweeklySchedule.instance
     private LocalDate today = LocalDate.now()
 
     @Test

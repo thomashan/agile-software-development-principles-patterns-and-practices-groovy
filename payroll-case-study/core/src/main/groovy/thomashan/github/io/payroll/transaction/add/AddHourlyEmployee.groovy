@@ -13,7 +13,7 @@ class AddHourlyEmployee implements AddEmployeeTransaction {
         this.thomashan_github_io_payroll_transaction_add_AddEmployeeTransaction__name = name
         this.thomashan_github_io_payroll_transaction_add_AddEmployeeTransaction__address = address
         this.thomashan_github_io_payroll_transaction_add_AddEmployeeTransaction__paymentClassification = new HourlyClassification(hourlyRate)
-        this.thomashan_github_io_payroll_transaction_add_AddEmployeeTransaction__paymentSchedule = new WeeklySchedule()
+        this.thomashan_github_io_payroll_transaction_add_AddEmployeeTransaction__paymentSchedule = WeeklySchedule.instance
         this.hourlyRate = hourlyRate
     }
 }
