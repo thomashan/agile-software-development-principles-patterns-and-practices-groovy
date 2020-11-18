@@ -1,4 +1,9 @@
 build:
   environment:
     sdkman:
-    - java@9.0.0-zulu
+      - java@9.0.0-zulu
+  nodes:
+    analysis:
+      tests:
+        override:
+          - java-scrutinizer-run
