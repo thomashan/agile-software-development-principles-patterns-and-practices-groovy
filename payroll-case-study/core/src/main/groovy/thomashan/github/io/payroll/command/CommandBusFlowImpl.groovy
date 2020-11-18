@@ -9,12 +9,12 @@ import thomashan.github.io.payroll.transaction.Command
 @Singleton
 class CommandBusFlowImpl implements CommandBus<Folyam<Command>> {
     private static final Logger logger = LoggerFactory.getLogger(CommandBusFlowImpl.class)
-    private final CachingProcessor<Command> transactions = new CachingProcessor()
+    private final CachingProcessor<Command> commands = new CachingProcessor()
 
     @Override
     void push(Command command) {
         logger.info("received: ${command}")
-        transactions.onNext(command)
+        commands.onNext(command)
     }
 
     /**
@@ -23,22 +23,22 @@ class CommandBusFlowImpl implements CommandBus<Folyam<Command>> {
     @Override
     void start() {
         logger.info("starting")
-        transactions.subscribe({ it.execute() })
+        commands.subscribe({ Command command -> command.execute() })
     }
 
     @Override
     void end() {
         logger.info("end")
-        transactions.onComplete()
+        commands.onComplete()
     }
 
     @Override
     boolean isComplete() {
-        return transactions.hasComplete()
+        return commands.hasComplete()
     }
 
     @Override
     Folyam<Command> getPublisher() {
-        return transactions
+        return commands
     }
 }
