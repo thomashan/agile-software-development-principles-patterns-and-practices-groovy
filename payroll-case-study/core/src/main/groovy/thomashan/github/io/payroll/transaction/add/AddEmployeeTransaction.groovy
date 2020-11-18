@@ -8,14 +8,12 @@ import thomashan.github.io.payroll.schedule.PaymentSchedule
 import thomashan.github.io.payroll.transaction.Transaction
 
 @TupleConstructor
-abstract class AddEmployeeTransaction implements Transaction {
+trait AddEmployeeTransaction implements Transaction {
     final int employeeId
     final String name
     final String address
-
-    abstract PaymentClassification getPaymentClassification()
-
-    abstract PaymentSchedule getPaymentSchedule()
+    final PaymentClassification paymentClassification
+    final PaymentSchedule paymentSchedule
 
     @Override
     void execute() {
