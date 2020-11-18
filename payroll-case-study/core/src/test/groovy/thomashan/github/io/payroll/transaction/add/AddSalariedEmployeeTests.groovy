@@ -5,45 +5,44 @@ import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.classification.SalariedClassification
 import thomashan.github.io.payroll.method.HoldMethod
 import thomashan.github.io.payroll.schedule.MonthlySchedule
-import thomashan.github.io.payroll.transaction.Transaction
-import thomashan.github.io.payroll.transaction.TransactionTests
-import thomashan.github.io.payroll.transaction.add.AddSalariedEmployee
+import thomashan.github.io.payroll.transaction.Command
+import thomashan.github.io.payroll.transaction.CommandTests
 
-class AddSalariedEmployeeTests implements TransactionTests {
-    private Transaction transaction
+class AddSalariedEmployeeTests implements CommandTests {
+    private Command command
     private String name = "Salaried"
     private String address = "SalariedHome"
     private double salary = 1000.0
 
     @BeforeEach
     void setUp() {
-        transaction = new AddSalariedEmployee(employeeId, name, address, salary)
+        command = new AddSalariedEmployee(employeeId, name, address, salary)
     }
 
     @Test
     void "add salaried employee should return correct employee name"() {
-        transaction.execute()
+        command.execute()
 
         assert payrollDatabase.getEmployee(employeeId).name == name
     }
 
     @Test
     void "add salaried employee should return correct employee address"() {
-        transaction.execute()
+        command.execute()
 
         assert payrollDatabase.getEmployee(employeeId).address == address
     }
 
     @Test
     void "add salaried employee should return correct payment classification"() {
-        transaction.execute()
+        command.execute()
 
         assert payrollDatabase.getEmployee(employeeId).paymentClassification instanceof SalariedClassification
     }
 
     @Test
     void "add salaried employee should return correct salary"() {
-        transaction.execute()
+        command.execute()
         SalariedClassification salariedClassification = (SalariedClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
 
         assert salariedClassification.salary == salary
@@ -51,14 +50,14 @@ class AddSalariedEmployeeTests implements TransactionTests {
 
     @Test
     void "add salaried employee should return correct payment schedule"() {
-        transaction.execute()
+        command.execute()
 
         assert payrollDatabase.getEmployee(employeeId).paymentSchedule instanceof MonthlySchedule
     }
 
     @Test
     void "add salaried employee should return correct payment method"() {
-        transaction.execute()
+        command.execute()
 
         assert payrollDatabase.getEmployee(employeeId).paymentMethod instanceof HoldMethod
     }

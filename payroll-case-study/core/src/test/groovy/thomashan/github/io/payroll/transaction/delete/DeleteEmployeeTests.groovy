@@ -2,13 +2,12 @@ package thomashan.github.io.payroll.transaction.delete
 
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
-import thomashan.github.io.payroll.transaction.TransactionTests
+import thomashan.github.io.payroll.transaction.CommandTests
 import thomashan.github.io.payroll.transaction.add.AddSalariedEmployee
-import thomashan.github.io.payroll.transaction.delete.DeleteEmployee
 
 import static org.junit.jupiter.api.Assertions.assertThrows
 
-class DeleteEmployeeTests implements TransactionTests {
+class DeleteEmployeeTests implements CommandTests {
     @BeforeEach
     void setUp() {
         new AddSalariedEmployee(employeeId, "AnonName", "AnonAddress", 1).execute()
