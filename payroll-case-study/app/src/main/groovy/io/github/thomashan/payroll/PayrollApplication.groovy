@@ -1,6 +1,8 @@
 package io.github.thomashan.payroll
 
 import groovy.transform.builder.Builder
+import io.github.thomashan.command.CommandBus
+import io.github.thomashan.command.CommandBusFlowImpl
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
 
@@ -9,13 +11,13 @@ class PayrollApplication {
     private static final Logger logger = LoggerFactory.getLogger(PayrollApplication.class)
     DataSource dataSource
     Ui ui
-    io.github.thomashan.payroll.command.CommandBus commandBus
+    CommandBus commandBus
 
     static void main(String[] args) {
         PayrollApplication payrollApplication = builder()
                 .dataSource(DataSource.FLAT_FILE)
                 .ui(Ui.CONSOLE)
-                .commandBus(io.github.thomashan.payroll.command.CommandBusFlowImpl.instance)
+                .commandBus(CommandBusFlowImpl.instance)
                 .build()
 
         logger.info("adding transactions")

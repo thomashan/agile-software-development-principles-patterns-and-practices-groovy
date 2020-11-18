@@ -1,4 +1,4 @@
-package io.github.thomashan.payroll.command
+package io.github.thomashan.command
 
 import hu.akarnokd.reactive4javaflow.Folyam
 import hu.akarnokd.reactive4javaflow.processors.CachingProcessor
