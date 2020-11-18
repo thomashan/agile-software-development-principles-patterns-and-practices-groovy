@@ -1,10 +1,9 @@
 package io.github.thomashan.payroll.classification
 
-
 import java.time.Period
 
-import static java.time.temporal.ChronoUnit.DAYS
 import static io.github.thomashan.payroll.DateTimeUtil.daysInMonth
+import static java.time.temporal.ChronoUnit.DAYS
 
 class CommissionedClassification implements PaymentClassification {
     private final List<io.github.thomashan.payroll.SalesReceipt> salesReceipts = []
@@ -27,7 +26,7 @@ class CommissionedClassification implements PaymentClassification {
         double commissions = salesReceipts.findAll {
             it.date > payCheque.payPeriodStartDate && it.date <= payCheque.payPeriodEndDate
         }
-        .collect { it.amount * commissionRate / 100 }.sum() ?: 0
+                .collect { it.amount * commissionRate / 100 }.sum() ?: 0
 
         return commissions + proRataSalary
     }

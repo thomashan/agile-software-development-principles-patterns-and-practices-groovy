@@ -1,8 +1,7 @@
 package io.github.thomashan.payroll.ui.zk.list
 
-
-import org.junit.jupiter.api.Test
 import io.github.thomashan.payroll.classification.PaymentClassification
+import org.junit.jupiter.api.Test
 
 class EmployeeViewModelTests implements io.github.thomashan.payroll.ui.EmployeeManagement {
     @Test
