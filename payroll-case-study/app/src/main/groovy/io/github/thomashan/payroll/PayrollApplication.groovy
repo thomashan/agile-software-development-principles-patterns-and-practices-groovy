@@ -20,12 +20,12 @@ class PayrollApplication {
                 .commandBus(CommandBusFlowImpl.instance)
                 .build()
 
-        logger.info("adding transactions")
-        payrollApplication.commandBus.push(new io.github.thomashan.payroll.transaction.add.AddCommissionedEmployee(1, "Commissioned", "Address1", 1000, 20))
-        logger.info("added transactions")
+        logger.info("adding command")
+        payrollApplication.commandBus.push(new io.github.thomashan.payroll.command.add.AddCommissionedEmployee(1, "Commissioned", "Address1", 1000, 20))
+        logger.info("added command")
         payrollApplication.commandBus.end()
 
-        logger.info("getting transactions")
+        logger.info("getting command")
         payrollApplication
                 .run()
     }

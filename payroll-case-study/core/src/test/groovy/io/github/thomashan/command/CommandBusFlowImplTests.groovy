@@ -6,11 +6,11 @@ import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
 class CommandBusFlowImplTests {
-    private io.github.thomashan.payroll.transaction.Command command
+    private Command command
 
     @BeforeEach
     void setUp() {
-        command = new io.github.thomashan.payroll.transaction.add.AddCommissionedEmployee(1, "Commissioned", "Address1", 1000, 20)
+        command = new io.github.thomashan.payroll.command.add.AddCommissionedEmployee(1, "Commissioned", "Address1", 1000, 20)
     }
 
     @Test

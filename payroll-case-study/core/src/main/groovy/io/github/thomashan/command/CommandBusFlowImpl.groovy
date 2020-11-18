@@ -4,7 +4,6 @@ import hu.akarnokd.reactive4javaflow.Folyam
 import hu.akarnokd.reactive4javaflow.processors.CachingProcessor
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
-import io.github.thomashan.payroll.transaction.Command
 
 @Singleton
 class CommandBusFlowImpl implements CommandBus<Folyam<Command>> {
@@ -18,7 +17,7 @@ class CommandBusFlowImpl implements CommandBus<Folyam<Command>> {
     }
 
     /**
-     * It doesn't matter when start() is invoked because it will replay all the transaction pushed into the command bus.
+     * It doesn't matter when start() is invoked because it will replay all the commands pushed into the command bus.
      */
     @Override
     void start() {

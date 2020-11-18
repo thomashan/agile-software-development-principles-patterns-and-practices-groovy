@@ -7,7 +7,7 @@ import io.github.thomashan.payroll.classification.PaymentClassification
 class EmployeeViewModelTests implements io.github.thomashan.payroll.ui.EmployeeManagement {
     @Test
     void "hourly employee wage should show correctly"() {
-        new io.github.thomashan.payroll.transaction.add.AddHourlyEmployee(employeeId, "AnonName", "AnonAddress", 1).execute()
+        new io.github.thomashan.payroll.command.add.AddHourlyEmployee(employeeId, "AnonName", "AnonAddress", 1).execute()
         io.github.thomashan.payroll.Employee employee = payrollDatabase.getEmployee(employeeId)
         EmployeeViewModel employeeViewModel = new EmployeeViewModel(employee)
 
@@ -16,7 +16,7 @@ class EmployeeViewModelTests implements io.github.thomashan.payroll.ui.EmployeeM
 
     @Test
     void "salaried employee wage should show correctly"() {
-        new io.github.thomashan.payroll.transaction.add.AddSalariedEmployee(employeeId, "AnonName", "AnonAddress", 1).execute()
+        new io.github.thomashan.payroll.command.add.AddSalariedEmployee(employeeId, "AnonName", "AnonAddress", 1).execute()
         io.github.thomashan.payroll.Employee employee = payrollDatabase.getEmployee(employeeId)
         EmployeeViewModel employeeViewModel = new EmployeeViewModel(employee)
 
@@ -25,7 +25,7 @@ class EmployeeViewModelTests implements io.github.thomashan.payroll.ui.EmployeeM
 
     @Test
     void "commissioned employee wage should show correctly"() {
-        new io.github.thomashan.payroll.transaction.add.AddCommissionedEmployee(employeeId, "AnonName", "AnonAddress", 1, 15).execute()
+        new io.github.thomashan.payroll.command.add.AddCommissionedEmployee(employeeId, "AnonName", "AnonAddress", 1, 15).execute()
         io.github.thomashan.payroll.Employee employee = payrollDatabase.getEmployee(employeeId)
         EmployeeViewModel employeeViewModel = new EmployeeViewModel(employee)
 
@@ -34,7 +34,7 @@ class EmployeeViewModelTests implements io.github.thomashan.payroll.ui.EmployeeM
 
     @Test
     void "unknown classification returns error"() {
-        new io.github.thomashan.payroll.transaction.add.AddCommissionedEmployee(employeeId, "AnonName", "AnonAddress", 1, 15).execute()
+        new io.github.thomashan.payroll.command.add.AddCommissionedEmployee(employeeId, "AnonName", "AnonAddress", 1, 15).execute()
         io.github.thomashan.payroll.Employee employee = payrollDatabase.getEmployee(employeeId)
         employee.paymentClassification = new UnknownPaymentClassification()
         EmployeeViewModel employeeViewModel = new EmployeeViewModel(employee)
