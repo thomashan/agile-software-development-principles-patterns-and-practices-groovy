@@ -1,11 +1,11 @@
 package thomashan.github.io.payroll.command
 
-import thomashan.github.io.payroll.transaction.Transaction
+import thomashan.github.io.payroll.transaction.Command
 
 import java.util.concurrent.Flow.Publisher
 
-trait CommandBus<T extends Publisher<Transaction>> {
-    abstract void push(Transaction transaction)
+trait CommandBus<T extends Publisher<Command>> {
+    abstract void push(Command transaction)
 
     /**
      * Depending on the implementation starting maybe synchronous or asynchronous.

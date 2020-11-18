@@ -5,45 +5,44 @@ import org.junit.jupiter.api.Test
 import thomashan.github.io.payroll.classification.HourlyClassification
 import thomashan.github.io.payroll.method.HoldMethod
 import thomashan.github.io.payroll.schedule.WeeklySchedule
-import thomashan.github.io.payroll.transaction.Transaction
-import thomashan.github.io.payroll.transaction.TransactionTests
-import thomashan.github.io.payroll.transaction.add.AddHourlyEmployee
+import thomashan.github.io.payroll.transaction.Command
+import thomashan.github.io.payroll.transaction.CommandTests
 
-class AddHourlyEmployeeTests implements TransactionTests {
-    private Transaction transaction
+class AddHourlyEmployeeTests implements CommandTests {
+    private Command command
     private String name = "Hourly"
     private String address = "HourlyHome"
     private double hourlyRate = 100.0
 
     @BeforeEach
     void setUp() {
-        transaction = new AddHourlyEmployee(employeeId, name, address, hourlyRate)
+        command = new AddHourlyEmployee(employeeId, name, address, hourlyRate)
     }
 
     @Test
     void "add hourly employee should return correct employee name"() {
-        transaction.execute()
+        command.execute()
 
         assert payrollDatabase.getEmployee(employeeId).name == name
     }
 
     @Test
     void "add hourly employee should return correct employee address"() {
-        transaction.execute()
+        command.execute()
 
         assert payrollDatabase.getEmployee(employeeId).address == address
     }
 
     @Test
     void "add hourly employee should return correct payment classification"() {
-        transaction.execute()
+        command.execute()
 
         assert payrollDatabase.getEmployee(employeeId).paymentClassification instanceof HourlyClassification
     }
 
     @Test
     void "add hourly employee should return correct hourlyRate"() {
-        transaction.execute()
+        command.execute()
         HourlyClassification hourlyClassification = (HourlyClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
 
         assert hourlyClassification.hourlyRate == hourlyRate
@@ -51,14 +50,14 @@ class AddHourlyEmployeeTests implements TransactionTests {
 
     @Test
     void "add hourly employee should return correct payment schedule"() {
-        transaction.execute()
+        command.execute()
 
         assert payrollDatabase.getEmployee(employeeId).paymentSchedule instanceof WeeklySchedule
     }
 
     @Test
     void "add hourly employee should return correct payment method"() {
-        transaction.execute()
+        command.execute()
 
         assert payrollDatabase.getEmployee(employeeId).paymentMethod instanceof HoldMethod
     }

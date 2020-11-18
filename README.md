@@ -13,7 +13,7 @@ This is an uplift to the original solutions using
 * gradle
 * junit5
 
-Following tech is used improve the project
+We use the Following tech to improve the project
 
 | Methodology   | Tool       | Web                   |
 | ---           | ---        | ---                   |

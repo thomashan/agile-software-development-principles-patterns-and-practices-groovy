@@ -1,10 +1,10 @@
 package thomashan.github.io.payroll.transaction.delete
 
 import groovy.transform.TupleConstructor
-import thomashan.github.io.payroll.transaction.Transaction
+import thomashan.github.io.payroll.transaction.Command
 
 @TupleConstructor
-class DeleteEmployee implements Transaction {
+class DeleteEmployee implements Command {
     final int employeeId
 
     @Override
