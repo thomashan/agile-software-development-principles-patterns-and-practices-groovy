@@ -4,6 +4,7 @@ import groovy.transform.Canonical
 import thomashan.github.io.payroll.classification.CommissionedClassification
 import thomashan.github.io.payroll.schedule.BiweeklySchedule
 
+@Canonical
 class AddCommissionedEmployee implements AddEmployeeTransaction {
     final double monthlySalary
     final double commissionRate
