@@ -1,7 +1,7 @@
 package io.github.thomashan.payroll
 
 @Singleton
-class InMemPayrollDatabase implements PayrollDatabase {
+class PayrollDatabaseInMemory implements PayrollDatabase {
     private Map<Integer, Employee> employees = [:]
     private Map<Integer, Employee> unionMembers = [:]
 
