@@ -1,12 +1,15 @@
 package io.github.thomashan.payroll.classification
 
+import io.github.thomashan.payroll.PayCheque
+import io.github.thomashan.payroll.SalesReceipt
+
 import java.time.Period
 
 import static io.github.thomashan.payroll.DateTimeUtil.daysInMonth
 import static java.time.temporal.ChronoUnit.DAYS
 
 class CommissionedClassification implements PaymentClassification {
-    private final List<io.github.thomashan.payroll.SalesReceipt> salesReceipts = []
+    private final List<SalesReceipt> salesReceipts = []
     final double salary
     final double commissionRate
 
@@ -15,12 +18,12 @@ class CommissionedClassification implements PaymentClassification {
         this.commissionRate = commissionRate
     }
 
-    void addSalesReceipt(io.github.thomashan.payroll.SalesReceipt salesReceipt) {
+    void addSalesReceipt(SalesReceipt salesReceipt) {
         salesReceipts.add(salesReceipt)
     }
 
     @Override
-    double calculatePay(io.github.thomashan.payroll.PayCheque payCheque) {
+    double calculatePay(PayCheque payCheque) {
         long daysInPayCycle = Period.between(payCheque.payPeriodStartDate, payCheque.payPeriodEndDate).get(DAYS)
         double proRataSalary = daysInPayCycle / daysInMonth(payCheque.payDate) * salary
         double commissions = salesReceipts.findAll {

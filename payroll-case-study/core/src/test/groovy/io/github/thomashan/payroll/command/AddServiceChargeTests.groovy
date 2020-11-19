@@ -1,6 +1,9 @@
 package io.github.thomashan.payroll.command
 
 import io.github.thomashan.command.CommandTests
+import io.github.thomashan.payroll.Employee
+import io.github.thomashan.payroll.affiliation.UnionAffiliation
+import io.github.thomashan.payroll.command.add.AddHourlyEmployee
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -15,7 +18,7 @@ class AddServiceChargeTests implements CommandTests {
 
     @BeforeEach
     void setUp() {
-        new io.github.thomashan.payroll.command.add.AddHourlyEmployee(employeeId, "AnonName", "AnonAddress", 10).execute()
+        new AddHourlyEmployee(employeeId, "AnonName", "AnonAddress", 10).execute()
     }
 
     @Test
@@ -25,11 +28,11 @@ class AddServiceChargeTests implements CommandTests {
 
     @Test
     void "add service charge command on an existing employee with union affiliation should execute without error"() {
-        io.github.thomashan.payroll.Employee employee = payrollDatabase.getEmployee(employeeId)
+        Employee employee = payrollDatabase.getEmployee(employeeId)
         payrollDatabase.addUnionMember(memberId, employee)
-        employee.affiliation = Optional.of(new io.github.thomashan.payroll.affiliation.UnionAffiliation(memberId, 10))
+        employee.affiliation = Optional.of(new UnionAffiliation(memberId, 10))
         new AddServiceCharge(employeeId, today, charge).execute()
 
-        assert ((io.github.thomashan.payroll.affiliation.UnionAffiliation) employee.affiliation.get()).getServiceCharge(today).amount == charge
+        assert ((UnionAffiliation) employee.affiliation.get()).getServiceCharge(today).amount == charge
     }
 }

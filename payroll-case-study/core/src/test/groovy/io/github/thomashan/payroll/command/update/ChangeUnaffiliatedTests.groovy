@@ -1,6 +1,8 @@
 package io.github.thomashan.payroll.command.update
 
 import io.github.thomashan.payroll.Employee
+import io.github.thomashan.payroll.PayCheque
+import io.github.thomashan.payroll.affiliation.Affiliation
 import io.github.thomashan.payroll.command.add.AddHourlyEmployee
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -41,9 +43,9 @@ class ChangeUnaffiliatedTests implements ChangeEmployeeTests {
         assertThrows(RuntimeException, { new ChangeUnaffiliated(employeeId).execute() })
     }
 
-    private static class NoAffiliation implements io.github.thomashan.payroll.affiliation.Affiliation {
+    private static class NoAffiliation implements Affiliation {
         @Override
-        double calculateDeductions(io.github.thomashan.payroll.PayCheque payCheque) {
+        double calculateDeductions(PayCheque payCheque) {
             return 0
         }
     }

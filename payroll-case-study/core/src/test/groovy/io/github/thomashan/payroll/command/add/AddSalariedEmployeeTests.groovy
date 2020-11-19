@@ -2,6 +2,9 @@ package io.github.thomashan.payroll.command.add
 
 import io.github.thomashan.command.Command
 import io.github.thomashan.command.CommandTests
+import io.github.thomashan.payroll.classification.SalariedClassification
+import io.github.thomashan.payroll.method.HoldMethod
+import io.github.thomashan.payroll.schedule.MonthlySchedule
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -34,13 +37,13 @@ class AddSalariedEmployeeTests implements CommandTests {
     void "add salaried employee should return correct payment classification"() {
         command.execute()
 
-        assert payrollDatabase.getEmployee(employeeId).paymentClassification instanceof io.github.thomashan.payroll.classification.SalariedClassification
+        assert payrollDatabase.getEmployee(employeeId).paymentClassification instanceof SalariedClassification
     }
 
     @Test
     void "add salaried employee should return correct salary"() {
         command.execute()
-        io.github.thomashan.payroll.classification.SalariedClassification salariedClassification = (io.github.thomashan.payroll.classification.SalariedClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
+        SalariedClassification salariedClassification = (SalariedClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
 
         assert salariedClassification.salary == salary
     }
@@ -49,13 +52,13 @@ class AddSalariedEmployeeTests implements CommandTests {
     void "add salaried employee should return correct payment schedule"() {
         command.execute()
 
-        assert payrollDatabase.getEmployee(employeeId).paymentSchedule instanceof io.github.thomashan.payroll.schedule.MonthlySchedule
+        assert payrollDatabase.getEmployee(employeeId).paymentSchedule instanceof MonthlySchedule
     }
 
     @Test
     void "add salaried employee should return correct payment method"() {
         command.execute()
 
-        assert payrollDatabase.getEmployee(employeeId).paymentMethod instanceof io.github.thomashan.payroll.method.HoldMethod
+        assert payrollDatabase.getEmployee(employeeId).paymentMethod instanceof HoldMethod
     }
 }

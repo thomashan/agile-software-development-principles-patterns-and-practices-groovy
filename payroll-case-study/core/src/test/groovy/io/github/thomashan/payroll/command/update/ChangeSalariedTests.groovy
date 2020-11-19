@@ -1,6 +1,10 @@
 package io.github.thomashan.payroll.command.update
 
-
+import io.github.thomashan.payroll.Employee
+import io.github.thomashan.payroll.classification.SalariedClassification
+import io.github.thomashan.payroll.command.add.AddHourlyEmployee
+import io.github.thomashan.payroll.command.add.AddSalariedEmployee
+import io.github.thomashan.payroll.schedule.MonthlySchedule
 import org.junit.jupiter.api.Test
 
 class ChangeSalariedTests implements ChangeEmployeeTests {
@@ -8,25 +12,25 @@ class ChangeSalariedTests implements ChangeEmployeeTests {
 
     @Test
     void "non-salaried employee should be able to change salaried employee"() {
-        new io.github.thomashan.payroll.command.add.AddHourlyEmployee(employeeId, "AnonName", "AnonAddress", 100).execute()
+        new AddHourlyEmployee(employeeId, "AnonName", "AnonAddress", 100).execute()
         new ChangeSalaried(employeeId, newSalary).execute()
 
-        io.github.thomashan.payroll.Employee employee = payrollDatabase.getEmployee(employeeId)
-        io.github.thomashan.payroll.classification.SalariedClassification salariedClassification = employee.paymentClassification
+        Employee employee = payrollDatabase.getEmployee(employeeId)
+        SalariedClassification salariedClassification = employee.paymentClassification
 
         assert salariedClassification.salary == newSalary
-        assert employee.paymentSchedule == io.github.thomashan.payroll.schedule.MonthlySchedule.instance
+        assert employee.paymentSchedule == MonthlySchedule.instance
     }
 
     @Test
     void "salaried employee should be able to change salaried employee with updated salary"() {
-        new io.github.thomashan.payroll.command.add.AddSalariedEmployee(employeeId, "AnonName", "AnonAddress", 100).execute()
+        new AddSalariedEmployee(employeeId, "AnonName", "AnonAddress", 100).execute()
         new ChangeSalaried(employeeId, newSalary).execute()
 
-        io.github.thomashan.payroll.Employee employee = payrollDatabase.getEmployee(employeeId)
-        io.github.thomashan.payroll.classification.SalariedClassification salariedClassification = employee.paymentClassification
+        Employee employee = payrollDatabase.getEmployee(employeeId)
+        SalariedClassification salariedClassification = employee.paymentClassification
 
         assert salariedClassification.salary == newSalary
-        assert employee.paymentSchedule == io.github.thomashan.payroll.schedule.MonthlySchedule.instance
+        assert employee.paymentSchedule == MonthlySchedule.instance
     }
 }

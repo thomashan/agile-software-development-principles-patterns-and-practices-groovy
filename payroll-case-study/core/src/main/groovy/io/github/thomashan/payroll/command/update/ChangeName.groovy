@@ -1,5 +1,7 @@
 package io.github.thomashan.payroll.command.update
 
+import io.github.thomashan.payroll.Employee
+
 class ChangeName extends ChangeEmployee {
     final String name
 
@@ -9,7 +11,7 @@ class ChangeName extends ChangeEmployee {
     }
 
     @Override
-    void change(io.github.thomashan.payroll.Employee employee) {
+    void change(Employee employee) {
         employee.name = name
     }
 }

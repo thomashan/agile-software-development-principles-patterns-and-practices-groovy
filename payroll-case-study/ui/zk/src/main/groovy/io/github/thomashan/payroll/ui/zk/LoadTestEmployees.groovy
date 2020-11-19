@@ -1,6 +1,6 @@
 package io.github.thomashan.payroll.ui.zk
 
-
+import io.github.thomashan.payroll.Employee
 import io.github.thomashan.payroll.command.AddSalesReceipt
 import io.github.thomashan.payroll.command.AddTimeCard
 import io.github.thomashan.payroll.command.add.AddCommissionedEmployee
@@ -12,7 +12,7 @@ import io.github.thomashan.payroll.command.update.ChangeMember
 import java.time.LocalDate
 
 class LoadTestEmployees {
-    static List<io.github.thomashan.payroll.Employee> load() {
+    static List<Employee> load() {
         LocalDate today = LocalDate.now()
 
         new AddHourlyEmployee(1, "Employee1", "Address1", 100).execute()

@@ -1,7 +1,8 @@
 package io.github.thomashan.payroll.command.update
 
-
+import io.github.thomashan.payroll.Employee
 import io.github.thomashan.payroll.classification.PaymentClassification
+import io.github.thomashan.payroll.schedule.PaymentSchedule
 
 abstract class ChangeClassification extends ChangeEmployee {
     ChangeClassification(int employeeId) {
@@ -9,12 +10,12 @@ abstract class ChangeClassification extends ChangeEmployee {
     }
 
     @Override
-    void change(io.github.thomashan.payroll.Employee employee) {
+    void change(Employee employee) {
         employee.paymentClassification = paymentClassification
         employee.paymentSchedule = paymentSchedule
     }
 
     abstract protected PaymentClassification getPaymentClassification()
 
-    abstract protected io.github.thomashan.payroll.schedule.PaymentSchedule getPaymentSchedule()
+    abstract protected PaymentSchedule getPaymentSchedule()
 }

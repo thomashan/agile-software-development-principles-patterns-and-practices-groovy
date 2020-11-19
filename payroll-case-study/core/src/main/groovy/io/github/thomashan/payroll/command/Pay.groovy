@@ -1,12 +1,14 @@
 package io.github.thomashan.payroll.command
 
 import io.github.thomashan.command.Command
+import io.github.thomashan.payroll.Employee
+import io.github.thomashan.payroll.PayCheque
 
 import java.time.LocalDate
 
 class Pay implements Command {
     final LocalDate payDate
-    final Map<Integer, io.github.thomashan.payroll.PayCheque> payCheques = [:]
+    final Map<Integer, PayCheque> payCheques = [:]
 
     Pay(LocalDate payDate) {
         this.payDate = payDate
@@ -15,17 +17,17 @@ class Pay implements Command {
     @Override
     void execute() {
         for (Integer employeeId : payrollDatabase.allEmployeeIds) {
-            io.github.thomashan.payroll.Employee employee = payrollDatabase.getEmployee(employeeId)
+            Employee employee = payrollDatabase.getEmployee(employeeId)
 
             if (employee.isPayDate(payDate)) {
-                io.github.thomashan.payroll.PayCheque payCheque = new io.github.thomashan.payroll.PayCheque(employee.getPayPeriodStartDate(payDate), payDate)
+                PayCheque payCheque = new PayCheque(employee.getPayPeriodStartDate(payDate), payDate)
                 payCheques.put(employeeId, payCheque)
                 employee.payday(payCheque)
             }
         }
     }
 
-    Optional<io.github.thomashan.payroll.PayCheque> getPayCheque(int employeeId) {
+    Optional<PayCheque> getPayCheque(int employeeId) {
         return Optional.ofNullable(payCheques.get(employeeId))
     }
 }

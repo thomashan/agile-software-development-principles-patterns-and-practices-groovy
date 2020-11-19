@@ -1,6 +1,8 @@
 package io.github.thomashan.payroll.command
 
 import io.github.thomashan.command.Command
+import io.github.thomashan.payroll.Employee
+import io.github.thomashan.payroll.SalesReceipt
 import io.github.thomashan.payroll.classification.CommissionedClassification
 
 import java.time.LocalDate
@@ -18,12 +20,12 @@ class AddSalesReceipt implements Command {
 
     @Override
     void execute() {
-        io.github.thomashan.payroll.Employee employee = payrollDatabase.getEmployee(employeeId)
+        Employee employee = payrollDatabase.getEmployee(employeeId)
 
         if (employee) {
             if (employee.paymentClassification instanceof CommissionedClassification) {
                 CommissionedClassification commissionedClassification = employee.paymentClassification
-                commissionedClassification.addSalesReceipt(new io.github.thomashan.payroll.SalesReceipt(date, amount))
+                commissionedClassification.addSalesReceipt(new SalesReceipt(date, amount))
             } else {
                 throw new RuntimeException("Error adding sales receipt to non-commissioned employee")
             }

@@ -1,6 +1,8 @@
 package io.github.thomashan.payroll.command
 
 import io.github.thomashan.command.Command
+import io.github.thomashan.payroll.Employee
+import io.github.thomashan.payroll.affiliation.UnionAffiliation
 
 import java.time.LocalDate
 
@@ -17,11 +19,11 @@ class AddServiceCharge implements Command {
 
     @Override
     void execute() {
-        io.github.thomashan.payroll.Employee employee = payrollDatabase.getUnionMember(memberId)
+        Employee employee = payrollDatabase.getUnionMember(memberId)
         if (!employee) {
             throw new RuntimeException("No such union member")
         }
 
-        ((io.github.thomashan.payroll.affiliation.UnionAffiliation) employee.affiliation.get()).addServiceCharge(date, amount)
+        ((UnionAffiliation) employee.affiliation.get()).addServiceCharge(date, amount)
     }
 }

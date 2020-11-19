@@ -1,22 +1,26 @@
 package io.github.thomashan.payroll.command.update
 
+import io.github.thomashan.payroll.Employee
+import io.github.thomashan.payroll.affiliation.Affiliation
+import io.github.thomashan.payroll.affiliation.UnionAffiliation
+
 class ChangeUnaffiliated extends ChangeAffiliation {
     ChangeUnaffiliated(int employeeId) {
         super(employeeId)
     }
 
     @Override
-    Optional<io.github.thomashan.payroll.affiliation.Affiliation> getAffiliation() {
+    Optional<Affiliation> getAffiliation() {
         return Optional.empty()
     }
 
     @Override
-    void recordMembership(io.github.thomashan.payroll.Employee employee) {
-        if (!employee.affiliation.present || !(employee.affiliation.get() instanceof io.github.thomashan.payroll.affiliation.UnionAffiliation)) {
+    void recordMembership(Employee employee) {
+        if (!employee.affiliation.present || !(employee.affiliation.get() instanceof UnionAffiliation)) {
             throw new RuntimeException("Employee employeeId[${employeeId}] not a union member")
         }
 
-        io.github.thomashan.payroll.affiliation.UnionAffiliation unionAffiliation = employee.affiliation.get()
+        UnionAffiliation unionAffiliation = employee.affiliation.get()
         payrollDatabase.removeUnionMember(unionAffiliation.memberId)
     }
 }

@@ -2,20 +2,22 @@ package io.github.thomashan.payroll.classification
 
 import groovy.transform.Immutable
 import groovy.transform.TupleConstructor
+import io.github.thomashan.payroll.PayCheque
+import io.github.thomashan.payroll.TimeCard
 
 import java.time.LocalDate
 
 @Immutable
 @TupleConstructor
 class HourlyClassification implements PaymentClassification {
-    private final Map<LocalDate, io.github.thomashan.payroll.TimeCard> timeCards = [:]
+    private final Map<LocalDate, TimeCard> timeCards = [:]
     double hourlyRate
 
-    void addTimeCard(io.github.thomashan.payroll.TimeCard timeCard) {
+    void addTimeCard(TimeCard timeCard) {
         timeCards.put(timeCard.date, timeCard)
     }
 
-    io.github.thomashan.payroll.TimeCard getTimeCard(LocalDate date) {
+    TimeCard getTimeCard(LocalDate date) {
         if (!timeCards.containsKey(date)) {
             throw new RuntimeException("Time card doesn't exist for ${date}")
         }
@@ -24,7 +26,7 @@ class HourlyClassification implements PaymentClassification {
     }
 
     @Override
-    double calculatePay(io.github.thomashan.payroll.PayCheque payCheque) {
+    double calculatePay(PayCheque payCheque) {
         timeCards.findAll {
             it.key > payCheque.payPeriodStartDate && it.key <= payCheque.payPeriodEndDate
         }
@@ -32,7 +34,7 @@ class HourlyClassification implements PaymentClassification {
                 .sum() ?: 0
     }
 
-    private double calculatePayForTimeCard(io.github.thomashan.payroll.TimeCard timeCard) {
+    private double calculatePayForTimeCard(TimeCard timeCard) {
         double overtimeHours = Math.max(0, timeCard.hours - 8)
         double normalHours = timeCard.hours - overtimeHours
 

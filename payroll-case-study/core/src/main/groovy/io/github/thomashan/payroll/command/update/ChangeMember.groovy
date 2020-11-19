@@ -1,5 +1,9 @@
 package io.github.thomashan.payroll.command.update
 
+import io.github.thomashan.payroll.Employee
+import io.github.thomashan.payroll.affiliation.Affiliation
+import io.github.thomashan.payroll.affiliation.UnionAffiliation
+
 class ChangeMember extends ChangeAffiliation {
     final int memberId
     final double dues
@@ -11,12 +15,12 @@ class ChangeMember extends ChangeAffiliation {
     }
 
     @Override
-    Optional<io.github.thomashan.payroll.affiliation.Affiliation> getAffiliation() {
-        return Optional.of(new io.github.thomashan.payroll.affiliation.UnionAffiliation(memberId, dues))
+    Optional<Affiliation> getAffiliation() {
+        return Optional.of(new UnionAffiliation(memberId, dues))
     }
 
     @Override
-    void recordMembership(io.github.thomashan.payroll.Employee employee) {
+    void recordMembership(Employee employee) {
         payrollDatabase.addUnionMember(memberId, employee)
     }
 }

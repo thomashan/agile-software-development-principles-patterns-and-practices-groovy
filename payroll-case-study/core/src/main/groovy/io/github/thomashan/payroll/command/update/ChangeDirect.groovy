@@ -1,5 +1,8 @@
 package io.github.thomashan.payroll.command.update
 
+import io.github.thomashan.payroll.method.DirectMethod
+import io.github.thomashan.payroll.method.PaymentMethod
+
 class ChangeDirect extends ChangeMethod {
     final String bank
     final String account
@@ -11,7 +14,7 @@ class ChangeDirect extends ChangeMethod {
     }
 
     @Override
-    io.github.thomashan.payroll.method.PaymentMethod getPaymentMethod() {
-        return new io.github.thomashan.payroll.method.DirectMethod(bank, account)
+    PaymentMethod getPaymentMethod() {
+        return new DirectMethod(bank, account)
     }
 }

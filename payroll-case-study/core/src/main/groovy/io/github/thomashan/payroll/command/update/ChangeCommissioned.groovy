@@ -3,6 +3,8 @@ package io.github.thomashan.payroll.command.update
 
 import io.github.thomashan.payroll.classification.CommissionedClassification
 import io.github.thomashan.payroll.classification.PaymentClassification
+import io.github.thomashan.payroll.schedule.BiweeklySchedule
+import io.github.thomashan.payroll.schedule.PaymentSchedule
 
 class ChangeCommissioned extends ChangeClassification {
     final double salary
@@ -20,7 +22,7 @@ class ChangeCommissioned extends ChangeClassification {
     }
 
     @Override
-    io.github.thomashan.payroll.schedule.PaymentSchedule getPaymentSchedule() {
-        return io.github.thomashan.payroll.schedule.BiweeklySchedule.instance
+    PaymentSchedule getPaymentSchedule() {
+        return BiweeklySchedule.instance
     }
 }

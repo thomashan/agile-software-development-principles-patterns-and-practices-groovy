@@ -1,6 +1,7 @@
 package io.github.thomashan.payroll.command.delete
 
 import io.github.thomashan.command.CommandTests
+import io.github.thomashan.payroll.command.add.AddSalariedEmployee
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -9,7 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows
 class DeleteEmployeeTests implements CommandTests {
     @BeforeEach
     void setUp() {
-        new io.github.thomashan.payroll.command.add.AddSalariedEmployee(employeeId, "AnonName", "AnonAddress", 1).execute()
+        new AddSalariedEmployee(employeeId, "AnonName", "AnonAddress", 1).execute()
     }
 
     @Test

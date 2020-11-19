@@ -15,7 +15,7 @@ class PayTests implements CommandTests {
     @Test
     void "pay single salaried employee on the last day of the month"() {
         double monthlySalary = 1000
-        new io.github.thomashan.payroll.command.add.AddSalariedEmployee(employeeId, "AnonName", "AnonAddress", monthlySalary).execute()
+        new AddSalariedEmployee(employeeId, "AnonName", "AnonAddress", monthlySalary).execute()
         LocalDate payDate = LocalDate.of(2001, 11, 30)
         Pay paydayCommand = new Pay(payDate)
         paydayCommand.execute()

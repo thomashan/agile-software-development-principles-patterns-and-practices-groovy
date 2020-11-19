@@ -1,6 +1,6 @@
 package io.github.thomashan.command
 
-
+import io.github.thomashan.payroll.command.add.AddCommissionedEmployee
 import org.awaitility.Awaitility
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
@@ -10,7 +10,7 @@ class CommandBusFlowImplTests {
 
     @BeforeEach
     void setUp() {
-        command = new io.github.thomashan.payroll.command.add.AddCommissionedEmployee(1, "Commissioned", "Address1", 1000, 20)
+        command = new AddCommissionedEmployee(1, "Commissioned", "Address1", 1000, 20)
     }
 
     @Test

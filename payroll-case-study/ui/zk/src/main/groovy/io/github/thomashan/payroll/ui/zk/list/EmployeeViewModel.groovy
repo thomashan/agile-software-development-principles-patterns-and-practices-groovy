@@ -2,6 +2,7 @@ package io.github.thomashan.payroll.ui.zk.list
 
 import groovy.transform.Canonical
 import groovy.transform.TupleConstructor
+import io.github.thomashan.payroll.Employee
 import io.github.thomashan.payroll.classification.CommissionedClassification
 import io.github.thomashan.payroll.classification.HourlyClassification
 import io.github.thomashan.payroll.classification.SalariedClassification
@@ -14,14 +15,14 @@ class EmployeeViewModel {
     final String address
     final String waging
 
-    EmployeeViewModel(io.github.thomashan.payroll.Employee employee) {
+    EmployeeViewModel(Employee employee) {
         this.employeeId = employee.employeeId
         this.name = employee.name
         this.address = employee.address
         this.waging = createWaging(employee)
     }
 
-    private String createWaging(io.github.thomashan.payroll.Employee employee) {
+    private String createWaging(Employee employee) {
         switch (employee.paymentClassification) {
             case CommissionedClassification:
                 CommissionedClassification commissionedClassification = (CommissionedClassification) employee.paymentClassification

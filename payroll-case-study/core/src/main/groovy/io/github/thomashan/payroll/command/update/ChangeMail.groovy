@@ -1,5 +1,8 @@
 package io.github.thomashan.payroll.command.update
 
+import io.github.thomashan.payroll.method.MailMethod
+import io.github.thomashan.payroll.method.PaymentMethod
+
 class ChangeMail extends ChangeMethod {
     final String address
 
@@ -9,7 +12,7 @@ class ChangeMail extends ChangeMethod {
     }
 
     @Override
-    io.github.thomashan.payroll.method.PaymentMethod getPaymentMethod() {
-        return new io.github.thomashan.payroll.method.MailMethod(address)
+    PaymentMethod getPaymentMethod() {
+        return new MailMethod(address)
     }
 }

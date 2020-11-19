@@ -2,6 +2,9 @@ package io.github.thomashan.payroll.command.add
 
 import io.github.thomashan.command.Command
 import io.github.thomashan.command.CommandTests
+import io.github.thomashan.payroll.classification.CommissionedClassification
+import io.github.thomashan.payroll.method.HoldMethod
+import io.github.thomashan.payroll.schedule.BiweeklySchedule
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -35,13 +38,13 @@ class AddCommissionedEmployeeTests implements CommandTests {
     void "add commissioned employee should return correct payment classification"() {
         command.execute()
 
-        assert payrollDatabase.getEmployee(employeeId).paymentClassification instanceof io.github.thomashan.payroll.classification.CommissionedClassification
+        assert payrollDatabase.getEmployee(employeeId).paymentClassification instanceof CommissionedClassification
     }
 
     @Test
     void "add commissioned employee should return correct salary"() {
         command.execute()
-        io.github.thomashan.payroll.classification.CommissionedClassification commissionedClassification = (io.github.thomashan.payroll.classification.CommissionedClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
+        CommissionedClassification commissionedClassification = (CommissionedClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
 
         assert commissionedClassification.salary == salary
     }
@@ -49,7 +52,7 @@ class AddCommissionedEmployeeTests implements CommandTests {
     @Test
     void "add commissioned employee should return correct commission rate"() {
         command.execute()
-        io.github.thomashan.payroll.classification.CommissionedClassification commissionedClassification = (io.github.thomashan.payroll.classification.CommissionedClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
+        CommissionedClassification commissionedClassification = (CommissionedClassification) payrollDatabase.getEmployee(employeeId).paymentClassification
 
         assert commissionedClassification.commissionRate == commissionRate
     }
@@ -58,13 +61,13 @@ class AddCommissionedEmployeeTests implements CommandTests {
     void "add commissioned employee should return correct payment schedule"() {
         command.execute()
 
-        assert payrollDatabase.getEmployee(employeeId).paymentSchedule instanceof io.github.thomashan.payroll.schedule.BiweeklySchedule
+        assert payrollDatabase.getEmployee(employeeId).paymentSchedule instanceof BiweeklySchedule
     }
 
     @Test
     void "add commissioned employee should return correct payment method"() {
         command.execute()
 
-        assert payrollDatabase.getEmployee(employeeId).paymentMethod instanceof io.github.thomashan.payroll.method.HoldMethod
+        assert payrollDatabase.getEmployee(employeeId).paymentMethod instanceof HoldMethod
     }
 }

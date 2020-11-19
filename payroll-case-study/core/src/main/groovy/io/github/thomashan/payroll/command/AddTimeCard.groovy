@@ -1,6 +1,8 @@
 package io.github.thomashan.payroll.command
 
 import io.github.thomashan.command.Command
+import io.github.thomashan.payroll.Employee
+import io.github.thomashan.payroll.TimeCard
 import io.github.thomashan.payroll.classification.HourlyClassification
 
 import java.time.LocalDate
@@ -18,12 +20,12 @@ class AddTimeCard implements Command {
 
     @Override
     void execute() {
-        io.github.thomashan.payroll.Employee employee = payrollDatabase.getEmployee(employeeId)
+        Employee employee = payrollDatabase.getEmployee(employeeId)
 
         if (employee) {
             if (employee.paymentClassification instanceof HourlyClassification) {
                 HourlyClassification hourlyClassification = employee.paymentClassification
-                hourlyClassification.addTimeCard(new io.github.thomashan.payroll.TimeCard(date, hours))
+                hourlyClassification.addTimeCard(new TimeCard(date, hours))
             } else {
                 throw new RuntimeException("Error adding time card to non-hourly employee")
             }

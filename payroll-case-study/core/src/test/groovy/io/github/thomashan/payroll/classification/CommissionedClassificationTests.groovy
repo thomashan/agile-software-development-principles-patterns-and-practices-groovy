@@ -1,6 +1,8 @@
 package io.github.thomashan.payroll.classification
 
-
+import io.github.thomashan.payroll.DateTimeUtil
+import io.github.thomashan.payroll.PayCheque
+import io.github.thomashan.payroll.SalesReceipt
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
 
@@ -9,14 +11,14 @@ import java.time.LocalDate
 class CommissionedClassificationTests {
     private LocalDate today = LocalDate.now()
     private CommissionedClassification commissionedClassification
-    private io.github.thomashan.payroll.SalesReceipt salesReceipt
+    private SalesReceipt salesReceipt
     private double salary = 1000
     private double commissionRate = 20
 
     @BeforeEach
     void setUp() {
         commissionedClassification = new CommissionedClassification(salary, commissionRate)
-        salesReceipt = new io.github.thomashan.payroll.SalesReceipt(today, 30)
+        salesReceipt = new SalesReceipt(today, 30)
     }
 
     @Test
@@ -26,7 +28,7 @@ class CommissionedClassificationTests {
 
     @Test
     void "calculatePay should return pro rata salary"() {
-        io.github.thomashan.payroll.PayCheque payCheque = new io.github.thomashan.payroll.PayCheque(today.minusWeeks(2), today)
+        PayCheque payCheque = new PayCheque(today.minusWeeks(2), today)
         double grossPay = proRataSalary(salary)
 
         assert commissionedClassification.calculatePay(payCheque) == grossPay
@@ -34,11 +36,11 @@ class CommissionedClassificationTests {
 
     @Test
     void "calculatePay should return correct gross pay with all sales receipt within the pay cycle included"() {
-        commissionedClassification.addSalesReceipt(new io.github.thomashan.payroll.SalesReceipt(today.minusWeeks(2), 70))
-        commissionedClassification.addSalesReceipt(new io.github.thomashan.payroll.SalesReceipt(today.minusDays(1), 50))
+        commissionedClassification.addSalesReceipt(new SalesReceipt(today.minusWeeks(2), 70))
+        commissionedClassification.addSalesReceipt(new SalesReceipt(today.minusDays(1), 50))
         commissionedClassification.addSalesReceipt(salesReceipt)
-        commissionedClassification.addSalesReceipt(new io.github.thomashan.payroll.SalesReceipt(today.plusDays(1), 100))
-        io.github.thomashan.payroll.PayCheque payCheque = new io.github.thomashan.payroll.PayCheque(today.minusWeeks(2), today)
+        commissionedClassification.addSalesReceipt(new SalesReceipt(today.plusDays(1), 100))
+        PayCheque payCheque = new PayCheque(today.minusWeeks(2), today)
         double proRataSalary = proRataSalary(salary)
         double commissions = [50, salesReceipt.amount]*.multiply(commissionRate / 100).sum()
         double grossPay = proRataSalary + commissions
@@ -47,6 +49,6 @@ class CommissionedClassificationTests {
     }
 
     private double proRataSalary(double salary) {
-        return 14 / io.github.thomashan.payroll.DateTimeUtil.daysInMonth(today) * salary
+        return 14 / DateTimeUtil.daysInMonth(today) * salary
     }
 }
