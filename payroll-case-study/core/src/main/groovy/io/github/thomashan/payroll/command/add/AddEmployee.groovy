@@ -8,7 +8,7 @@ import io.github.thomashan.payroll.method.HoldMethod
 import io.github.thomashan.payroll.schedule.PaymentSchedule
 
 @TupleConstructor
-trait AddEmployeeCommand implements Command {
+trait AddEmployee implements Command {
     final int employeeId
     final String name
     final String address

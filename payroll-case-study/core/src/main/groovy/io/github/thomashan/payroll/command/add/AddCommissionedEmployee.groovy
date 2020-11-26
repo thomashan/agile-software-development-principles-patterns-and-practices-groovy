@@ -5,7 +5,7 @@ import io.github.thomashan.payroll.classification.CommissionedClassification
 import io.github.thomashan.payroll.schedule.BiweeklySchedule
 
 @Canonical
-class AddCommissionedEmployee implements AddEmployeeCommand {
+class AddCommissionedEmployee implements AddEmployee {
     final double monthlySalary
     final double commissionRate
 

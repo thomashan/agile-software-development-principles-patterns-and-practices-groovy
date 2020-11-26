@@ -5,7 +5,7 @@ import io.github.thomashan.payroll.classification.HourlyClassification
 import io.github.thomashan.payroll.schedule.WeeklySchedule
 
 @Canonical
-class AddHourlyEmployee implements AddEmployeeCommand {
+class AddHourlyEmployee implements AddEmployee {
     final double hourlyRate
 
     AddHourlyEmployee(int employeeId, String name, String address, double hourlyRate) {

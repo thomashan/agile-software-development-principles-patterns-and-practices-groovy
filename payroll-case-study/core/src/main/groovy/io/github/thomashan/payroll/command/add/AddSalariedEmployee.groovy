@@ -5,7 +5,7 @@ import io.github.thomashan.payroll.classification.SalariedClassification
 import io.github.thomashan.payroll.schedule.MonthlySchedule
 
 @Canonical
-class AddSalariedEmployee implements AddEmployeeCommand {
+class AddSalariedEmployee implements AddEmployee {
     final double monthlySalary
 
     AddSalariedEmployee(int employeeId, String name, String address, double monthlySalary) {
