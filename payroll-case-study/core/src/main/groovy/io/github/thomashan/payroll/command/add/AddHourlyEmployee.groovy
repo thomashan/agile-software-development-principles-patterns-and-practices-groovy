@@ -9,11 +9,11 @@ class AddHourlyEmployee implements AddEmployee {
     final double hourlyRate
 
     AddHourlyEmployee(int employeeId, String name, String address, double hourlyRate) {
-        this.io_github_thomashan_payroll_command_add_AddEmployeeCommand__employeeId = employeeId
-        this.io_github_thomashan_payroll_command_add_AddEmployeeCommand__name = name
-        this.io_github_thomashan_payroll_command_add_AddEmployeeCommand__address = address
-        this.io_github_thomashan_payroll_command_add_AddEmployeeCommand__paymentClassification = new HourlyClassification(hourlyRate)
-        this.io_github_thomashan_payroll_command_add_AddEmployeeCommand__paymentSchedule = WeeklySchedule.instance
+        this.io_github_thomashan_payroll_command_add_AddEmployee__employeeId = employeeId
+        this.io_github_thomashan_payroll_command_add_AddEmployee__name = name
+        this.io_github_thomashan_payroll_command_add_AddEmployee__address = address
+        this.io_github_thomashan_payroll_command_add_AddEmployee__paymentClassification = new HourlyClassification(hourlyRate)
+        this.io_github_thomashan_payroll_command_add_AddEmployee__paymentSchedule = WeeklySchedule.instance
         this.hourlyRate = hourlyRate
     }
 }
