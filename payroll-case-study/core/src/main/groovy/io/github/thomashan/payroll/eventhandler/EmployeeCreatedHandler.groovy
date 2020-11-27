@@ -1,7 +1,8 @@
-package io.github.thomashan.payroll.event.add
+package io.github.thomashan.payroll.eventhandler
 
 import io.github.thomashan.event.EventHandler
 import io.github.thomashan.payroll.Employee
+import io.github.thomashan.payroll.event.add.EmployeeCreated
 import io.github.thomashan.payroll.method.HoldMethod
 
 class EmployeeCreatedHandler implements EventHandler<EmployeeCreated, Employee> {

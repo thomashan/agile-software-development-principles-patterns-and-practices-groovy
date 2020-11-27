@@ -1,9 +1,12 @@
-package io.github.thomashan.payroll.event.add
+package io.github.thomashan.payroll.eventhandler
 
 import io.github.thomashan.payroll.Employee
 import io.github.thomashan.payroll.classification.CommissionedClassification
 import io.github.thomashan.payroll.classification.HourlyClassification
 import io.github.thomashan.payroll.classification.SalariedClassification
+import io.github.thomashan.payroll.event.add.CommissionedEmployeeCreated
+import io.github.thomashan.payroll.event.add.HourlyEmployeeCreated
+import io.github.thomashan.payroll.event.add.SalariedEmployeeCreated
 import io.github.thomashan.payroll.method.HoldMethod
 import io.github.thomashan.payroll.schedule.BiweeklySchedule
 import io.github.thomashan.payroll.schedule.MonthlySchedule
