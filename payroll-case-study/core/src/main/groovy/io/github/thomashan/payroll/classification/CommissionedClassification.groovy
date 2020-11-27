@@ -1,5 +1,6 @@
 package io.github.thomashan.payroll.classification
 
+import groovy.transform.EqualsAndHashCode
 import io.github.thomashan.payroll.PayCheque
 import io.github.thomashan.payroll.SalesReceipt
 
@@ -8,6 +9,7 @@ import java.time.Period
 import static io.github.thomashan.payroll.DateTimeUtil.daysInMonth
 import static java.time.temporal.ChronoUnit.DAYS
 
+@EqualsAndHashCode
 class CommissionedClassification implements PaymentClassification {
     private final List<SalesReceipt> salesReceipts = []
     final double salary

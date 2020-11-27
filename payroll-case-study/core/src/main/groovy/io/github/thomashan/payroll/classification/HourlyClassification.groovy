@@ -1,5 +1,6 @@
 package io.github.thomashan.payroll.classification
 
+import groovy.transform.EqualsAndHashCode
 import groovy.transform.Immutable
 import groovy.transform.TupleConstructor
 import io.github.thomashan.payroll.PayCheque
@@ -9,9 +10,10 @@ import java.time.LocalDate
 
 @Immutable
 @TupleConstructor
+@EqualsAndHashCode
 class HourlyClassification implements PaymentClassification {
     private final Map<LocalDate, TimeCard> timeCards = [:]
-    double hourlyRate
+    final double hourlyRate
 
     void addTimeCard(TimeCard timeCard) {
         timeCards.put(timeCard.date, timeCard)

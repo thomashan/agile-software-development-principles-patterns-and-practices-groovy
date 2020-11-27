@@ -2,6 +2,8 @@ package io.github.thomashan.payroll
 
 import groovy.transform.Canonical
 import groovy.transform.TupleConstructor
+import io.github.thomashan.domain.AggregateRoot
+import io.github.thomashan.event.Event
 import io.github.thomashan.payroll.affiliation.Affiliation
 import io.github.thomashan.payroll.classification.PaymentClassification
 import io.github.thomashan.payroll.method.PaymentMethod
@@ -11,7 +13,7 @@ import java.time.LocalDate
 
 @Canonical
 @TupleConstructor
-class Employee {
+class Employee implements AggregateRoot<Employee> {
     final int employeeId
     String name
     String address
@@ -36,5 +38,12 @@ class Employee {
 
     LocalDate getPayPeriodStartDate(LocalDate payPeriodEndDate) {
         return paymentSchedule.getPayPeriodStartDate(payPeriodEndDate)
+    }
+
+    @Override
+    Employee plus(Event event) {
+        switch(event) {
+
+        }
     }
 }
