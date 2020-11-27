@@ -21,3 +21,8 @@ We use the Following tech to improve the project
 | Code analysis | Sonarcloud | https://sonarcloud.io |
 | Code analysis | codecov    | https://codecov.io    |
 | Code analysis | coveralls  | https://coveralls.io  |
+| Code analysis | Scrutinizer | 
+
+## Reading
+For some in depth discussions on CQRS and event sourcing please refer to [this page](https://developer.ibm.com/languages/java/series/reactive-in-practice/).
+It outlines the basics of what CQRS and event sourcing is also provides differences between writing model and reading model.

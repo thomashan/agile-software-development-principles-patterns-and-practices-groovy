@@ -1,14 +1,13 @@
 # Payroll case study
-I've tried to be true as possible to all source listings in both "Agile Software Development, Principles, Patterns, and Practices" and
-"Agile Principles, Patterns, and Practices in C#".
-If I deviate away from the source it will be listed in ["Improvements and changes"](##Improvements and changes)
+This is the port of the payroll example application in "Agile Principles, Patterns, and Practices in C#" into a CQRS,
+and event-sourcing architecture.
 
 ## Improvements and changes
 * Use of optional in favour of null object pattern
 * I've tried to dissect the tests as finely as possible to be clear about the intent and unit under tests
 * Pushed many tests from Payroll to lower level tests (e.g. PaymentClassification)
 * Get rid of Paycheck.getField method
-* Instead of PayrollApplication looping through the TransactionSource use reactive programming.
+* Instead of PayrollApplication looping through the CommandBus using reactive programming.
 
 ## Suggestions
 * use different data store
