@@ -1,4 +1,4 @@
-package io.github.thomashan.payroll.eventhandler
+package io.github.thomashan.payroll.eventhandler.add
 
 import io.github.thomashan.payroll.Employee
 import io.github.thomashan.payroll.classification.CommissionedClassification
